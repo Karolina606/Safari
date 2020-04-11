@@ -1,0 +1,46 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+package safari.animals{
+    abstract class Animal{
+    }
+    class Zebra{
+    }
+    class Elephant{
+    }
+    class Lion{
+    }
+
+    Animal <|-- Zebra
+    Animal <|-- Elephant
+    Animal <|-- Lion
+}
+package safari.plants{
+    abstract class Plant{
+    }
+    class Grass{
+    }
+    class Three{
+    }
+
+    Plant <|-- Grass
+    Plant <|-- Three
+}
+
+package human{
+    class Human{
+    }
+    class Gun{
+    }
+    Human *-- Gun
+}
+
+package safari{
+    class Safari{
+    }
+    Safari *-- Animal
+    Safari *-- Plant
+    Safari *-- Human
+}
+
+@enduml
