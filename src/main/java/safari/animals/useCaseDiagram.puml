@@ -1,0 +1,25 @@
+@startuml
+left to right direction
+skinparam packageStyle rect
+
+:User: as user
+:Animal: as animal
+:Human: as human
+
+rectangle "Safari"{
+    user --> (Define dimensions of the safari \n and how many times should the simulation repeat)
+
+    (Define dimensions of the safari \n and how many times should the simulation repeat) <.left. (Start the simluation): includes
+    (Start the simluation) <.left. (Place animals on safari): includes
+
+
+    animal --> (Move)
+    (Move) .left.> (Eat grass): extends
+    (Move) .down.> (Eat leaves): extends
+    (Move) ..> (Attack another animal): extends
+    (Move) ..> (Reproduct animal): extends
+
+    human --> (Shoot to the lion)
+
+}
+@enduml
