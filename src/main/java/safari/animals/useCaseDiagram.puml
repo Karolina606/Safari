@@ -9,7 +9,7 @@ skinparam packageStyle rect
 rectangle "Safari"{
     user --> (Define dimensions of the safari \n and how many times should the simulation repeat)
 
-    (Define dimensions of the safari \n and how many times should the simulation repeat) <.left. (Start the simluation): includes
+    (Define dimensions of the safari \n and how many times should the simulation repeat) <.left. (Start the simulation): includes
     (Start the simluation) <.left. (Place animals on safari): includes
 
 
