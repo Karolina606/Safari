@@ -3,12 +3,42 @@ skinparam classAttributeIconSize 0
 
 package safari.animals{
     abstract class Animal{
+        #energyLevel: int
+        #sleepTime: int
+        #position: Position
+        +getPosition():Position
+        +setPosition(Position):void
+        -{abstract}move(int, int): void
+        -{abstract}reproduction(List<Animal>): void
+        -{abstract}eat(Object): void
     }
     class Zebra{
+        -{static}quantity: int
+        +Zebra(Position)
+        +getPosition():Position
+        +setPosition(Position):void
+        +move(int, int): void
+        -reproduction(List<Animal>): void
+        -eat(Object): void
     }
     class Elephant{
+        -{static}quantity: int
+        +Elephant(Position)
+        +getPosition():Position
+        +setPosition(Position):void
+        +move(int, int): void
+        -reproduction(List<Animal>): void
+        -eat(Object): void
     }
     class Lion{
+        -{static}quantity: int
+        +Lion(Position)
+        +getPosition():Position
+        +setPosition(Position):void
+        +move(int, int): void
+        -reproduction(List<Animal>): void
+        -eat(Object): void
+        -attack(Object): void
     }
 
     Animal <|-- Zebra
@@ -17,30 +47,86 @@ package safari.animals{
 }
 package safari.plants{
     abstract class Plant{
+        #energyValue: int
+        #position: Position
+        +getEnergyValue(): int
+        +getPosition():Position
+        +setPosition(Position):void
     }
     class Grass{
+        -{static}quantity: int
+        +Grass(Position)
+        +getEnergyValue(): int
+        +getPosition():Position
+        +setPosition(Position):void
     }
     class Three{
+        -{static}quantity: int
+        -leavesQuantity: int
+        +Three(Position)
+        +getEnergyValue(): int
+        +getLeavesQuantity(): int
+        +decreaseLeavesQuantity(): int
+        +getPosition():Position
+        +setPosition(Position):void
     }
 
     Plant <|-- Grass
     Plant <|-- Three
 }
 
-package human{
+package safari.human{
     class Human{
+        -position: Position
+        -lookForTheAim(List<Animals>): Position
+        +Human(Position)
+        +getPosition():Position
+        +setPosition(Position):void
+        +shoot(Position): void
     }
     class Gun{
+        ~quantityOfBullets: int
+        +Gun()
+        +shoot(Position):void
     }
     Human *-- Gun
 }
 
 package safari{
     class Safari{
+        +width: int
+        +height: int
+        +safari:Object[][]
+        +allAnimals: List<Animal>
+        +Safari(int, int)
+        +main(String[]):void
     }
+
     Safari *-- Animal
     Safari *-- Plant
     Safari *-- Human
+}
+package safari.positionSystem{
+    class Position{
+        -x: int
+        -y: int
+        +getX(): int
+        +getY(): int
+        +setX(int): void
+        +setY(int):void
+        +Position(int, int): void
+        +{static}randomPosition(): Position
+    }
+
+    Animal *-- Position
+    Zebra *-- Position
+    Elephant *-- Position
+    Lion *-- Position
+
+    Plant *-- Position
+    Grass *-- Position
+    Three *-- Position
+    Human *-- Position
 }
 
 @enduml
