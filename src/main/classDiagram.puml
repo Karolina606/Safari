@@ -6,12 +6,15 @@ package safari.animals{
         #energyLevel: int
         #sleepTime: int
         #position: Position
+        +isAsleep: boolean
+        +Animal(Position)
         +getPosition():Position
         +setPosition(Position):void
         -{abstract}move(int, int): void
         -{abstract}reproduction(List<Animal>): void
         -{abstract}eat(Object): void
     }
+    note left of Animal:-energyLevel będzie w zakresie od 0 do 20 \n -przy każdym ruchu poziom energii spada \n -podczas jedzenia rośnie o wartoć odżywczą pokarmu \n -Dla każdego z tych zakresów (0,6], (6,14], (14, 20] zwierzęta poruszają się \n o inną liczbę pól \n -jeśli wartość ta spanie paniżej 4 zwierze z pewnym prawdopodobieństwem zaśnie \n - dla wartości 0 zwierze umiera
     class Zebra{
         -{static}quantity: int
         +Zebra(Position)
@@ -49,6 +52,7 @@ package safari.plants{
     abstract class Plant{
         #energyValue: int
         #position: Position
+        +Plant(Position)
         +getEnergyValue(): int
         +getPosition():Position
         +setPosition(Position):void
@@ -60,7 +64,7 @@ package safari.plants{
         +getPosition():Position
         +setPosition(Position):void
     }
-    class Three{
+    class Tree{
         -{static}quantity: int
         -leavesQuantity: int
         +Three(Position)
@@ -70,14 +74,16 @@ package safari.plants{
         +getPosition():Position
         +setPosition(Position):void
     }
+    note top of Tree: energyValue to wartość odżywcza \n jednego listka w tym przypadku
 
     Plant <|-- Grass
-    Plant <|-- Three
+    Plant <|-- Tree
 }
 
 package safari.human{
     class Human{
         -position: Position
+        -gun: Gun
         -lookForTheAim(List<Animals>): Position
         +Human(Position)
         +getPosition():Position
@@ -102,9 +108,9 @@ package safari{
         +main(String[]):void
     }
 
-    Safari *-- Animal
-    Safari *-- Plant
-    Safari *-- Human
+    Safari o-- Animal
+    Safari o-- Plant
+    Safari o-- Human
 }
 package safari.positionSystem{
     class Position{
@@ -125,7 +131,7 @@ package safari.positionSystem{
 
     Plant *-- Position
     Grass *-- Position
-    Three *-- Position
+    Tree *-- Position
     Human *-- Position
 }
 

@@ -3,14 +3,12 @@ left to right direction
 skinparam packageStyle rect
 
 :User: as user
-:Animal: as animal
-:Human: as human
 
 rectangle "Safari"{
     user --> (Define dimensions of the safari \n and how many times should the simulation repeat)
 
     (Define dimensions of the safari \n and how many times should the simulation repeat) <.left. (Start the simulation): includes
-    (Start the simluation) <.left. (Place animals on safari): includes
+    (Start the simulation) <.left. (Place animals and plants on safari): includes
 
 
     animal --> (Move)

@@ -1,0 +1,107 @@
+@startuml
+skinparam defaultFontColor white
+
+object Safari{
+    width = 50
+    height = 60
+    safari
+    allAnimals
+}
+Safari o-- Zebra
+Safari o-- Elephant
+Safari o-- Lion
+Safari o-- Grass1
+Safari o-- Grass2
+Safari o-- Tree
+Safari o-- Human
+
+
+
+object Lion{
+    energyLevel = 10
+    sleepTime = 0
+    position = Position1
+}
+object Position1{
+    x = 10
+    y = 11
+}
+Lion *-- Position1
+
+
+
+object Zebra{
+    energyLevel = 4
+    sleepTime = 2
+    position = Position2
+}
+object Position2{
+    x = 25
+    y = 16
+}
+Zebra *-- Position2
+
+
+object Elephant{
+    energyLevel = 8
+    sleepTime = 6
+    position = Position3
+}
+object Position3{
+    x = 48
+    y = 36
+}
+Elephant *-- Position3
+
+
+object Grass1{
+    energyValue = 3
+    position = Position4
+}
+object Position4{
+    x = 49
+    y = 59
+}
+Grass1 *-- Position4
+
+
+
+object Grass2{
+    energyValue = 3
+    position = Position5
+}
+object Position5{
+    x = 0
+    y = 0
+}
+Grass2 *-- Position5
+
+
+
+object Tree{
+    energyValue = 2
+    leavesQuantity = 20
+    position = Position6
+}
+object Position6{
+    x = 20
+    y = 20
+}
+Tree *-- Position6
+
+
+object Human{
+    position = Position7
+    gun = Gun
+}
+object Position7{
+    x = 5
+    y = 30
+}
+object Gun{
+    quantityOfBullets = 6
+}
+Human *-- Position7
+Human *-- Gun
+
+@enduml
