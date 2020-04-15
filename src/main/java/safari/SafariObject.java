@@ -30,7 +30,8 @@ public class SafariObject {
     /**
      * Remove SafariObject from Safari
      */
-    public void disappear(){
+    public void disappear(Safari safari){
+        safari.getMap().freeUpPosition(position, safari);
 
     }
 }
