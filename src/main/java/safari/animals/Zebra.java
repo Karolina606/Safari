@@ -1,5 +1,9 @@
 package safari.animals;
 
+import safari.Position;
+import safari.Safari;
+import safari.SafariMap;
+
 public class Zebra extends Animal{
     private static int quantity = 0;
 
@@ -11,8 +15,8 @@ public class Zebra extends Animal{
         Zebra.quantity = quantity;
     }
 
-    public Zebra(int x, int y){
-        super(x, y);
+    public Zebra(Position position, Safari safari){
+        super(position, safari);
         System.out.println("One more zebra");
         quantity++;
     }

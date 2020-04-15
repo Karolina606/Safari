@@ -65,10 +65,11 @@ public class SafariMap{
         System.out.println();
     }
 
-    public void freeUpPosition(Position position){
-        //dodaj ta pozycje do listy wolnych pozycji i w jej miejsce w tablicy map[][] wstaw null
+    public void freeUpPosition(Position position, Safari safari){
+        //dodaj ta pozycje do listy wolnych pozycji, usuń zwierzę z listy allAnimals, na jego miejsce w SafariMap wstaw null
         freePositions.add(position);
-
+        safari.getAllAnimals().remove(map.get(position));
+        map.put(position, null);
     }
 
     public SafariObject checkWhatsOnPosition(Position position){
@@ -76,17 +77,16 @@ public class SafariMap{
         return map.get(position);
     }
 
-    public void placeSafariObject(SafariObject object, Position position){
-        //jesli cos bylo na tej pozycji to musi to albo zjesc albo tu nie stawac po prostu
-        map.put(position, object);
+    public void placeSafariObject(SafariObject object, Position position, Safari safari){
         //zwalnianie jego starego miejsca
         map.put(object.getPosition(), null);
-        freeUpPosition(object.position);
+        //jesli cos bylo na tej pozycji to musi to albo zjesc albo tu nie stawac po prostu
+        map.put(position, object);
+        freeUpPosition(object.position, safari);
         //zapisanie wewnątrz obiektu nowej pozycji
         object.position = position;
         //zabierz zajeta pozycje z listy wolnych
         freePositions.remove(position);
+
     }
-
-
 }

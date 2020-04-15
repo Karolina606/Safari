@@ -5,36 +5,38 @@ import safari.plants.Plant;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 public class Safari {
-    int width;
-    int height;
-
-    // 2D tab of objects on safari
-    Object[][] safari;
-    List<Animal> allAnimals = new ArrayList<>();
+    private int maxIter;
+    private static SafariMap map;
+    private static List<Animal> allAnimals = new ArrayList<>();
 
     public Safari(int width, int height){
-        this.width = width;
-        this.height = height;
-        this.safari = new Object[width][height];
+        map = new SafariMap(width, height);
+    }
+
+    public SafariMap getMap(){
+        return map;
+    }
+
+    public List<Animal> getAllAnimals() {
+        return allAnimals;
+    }
+
+    public void placeRandomSafariObjects(){
+
     }
 
     public static void main(String[] args){
-        Safari safari1 = new Safari(10, 10);
-        Random r = new Random();
-        int x, y;
-        for(int i = 0; i<=2; i++){
-            do{
-                x = r.nextInt(10);
-                y = r.nextInt(10);
-            }while(safari1.safari[x][x] != null);
-
-            safari1.safari[x][y] = (Animal) new Zebra(x, y);
-            safari1.allAnimals.add((Animal) safari1.safari[x][y]);
-            System.out.println(safari1.allAnimals.get(i).positionToString() + " Now we are: " + Zebra.getQuantity());
-        }
+        Safari safari = new Safari(2, 2);
+        //--------------------------------------------------------------------------------------------------------------
+        Zebra zebra = new Zebra(map.getFreePositions().get(3), safari);
+        map.showFreePositions();
+        map.placeSafariObject( zebra, map.getFreePositions().get(0), safari);
+        map.showFreePositions();
+        //---------------------------------------------------------------------------------
     }
 }
 
