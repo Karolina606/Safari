@@ -39,4 +39,13 @@ public class Human extends SafariObject {
         //kiedy nie ma żadnego lwa na safari
         return new Position(-1, -1);
     }
+
+    /**
+     * Tries to shoot the Lion on found Position, Position
+     * @param position possible Posible of the Lion or Position (-1, -1) if it is not on Safari
+     * @param safari Safari where Lion lives
+     */
+    public void shoot(Position position, Safari safari){
+        gun.shoot(lookForTheAim(safari.getAllAnimals()), safari);
+    }
 }
