@@ -2,19 +2,30 @@
 skinparam defaultFontColor white
 
 object Safari{
+    allAnimals
+    map = Map
+}
+
+object Map{
     width = 50
     height = 60
-    safari
-    allAnimals
+    map[][]
+    freePositions
 }
+
+Safari *-- Map
 Safari o-- Zebra
 Safari o-- Elephant
 Safari o-- Lion
-Safari o-- Grass1
-Safari o-- Grass2
-Safari o-- Tree
-Safari o-- Human
 
+
+Map o-- Zebra
+Map o-- Elephant
+Map o-- Lion
+Map o-- Grass1
+Map o-- Grass2
+Map o-- Tree
+Map o-- Human
 
 
 object Lion{

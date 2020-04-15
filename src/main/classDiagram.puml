@@ -6,41 +6,33 @@ package safari.animals{
         #energyLevel: int
         #sleepTime: int
         #position: Position
-        +isAsleep: boolean
+        #isAsleep: boolean
         +Animal(Position)
-        +getPosition():Position
-        +setPosition(Position):void
-        -{abstract}move(int, int): void
-        -{abstract}reproduction(List<Animal>): void
-        -{abstract}eat(Object): void
+        +{abstract}move(Map): void
+        #{abstract}reproduction(List<Animal>): void
+        #{abstract}eat(Object): void
     }
-    note left of Animal:-energyLevel będzie w zakresie od 0 do 20 \n -przy każdym ruchu poziom energii spada \n -podczas jedzenia rośnie o wartoć odżywczą pokarmu \n -Dla każdego z tych zakresów (0,6], (6,14], (14, 20] zwierzęta poruszają się \n o inną liczbę pól \n -jeśli wartość ta spanie paniżej 4 zwierze z pewnym prawdopodobieństwem zaśnie \n - dla wartości 0 zwierze umiera
+    note left of Animal:-energyLevel będzie w zakresie od 0 do 20 \n -przy każdym ruchu poziom energii spada \n -podczas jedzenia rośnie o wartoć odżywczą pokarmu \n -Dla każdego z tych zakresów (0,6], (6,14], (14, 20] zwierzęta poruszają się \n o inną liczbę pól \n -jeśli wartość ta spanie poniżej 4 zwierze z pewnym prawdopodobieństwem zaśnie \n - dla wartości 0 zwierze umiera
     class Zebra{
         -{static}quantity: int
         +Zebra(Position)
-        +getPosition():Position
-        +setPosition(Position):void
-        +move(int, int): void
-        -reproduction(List<Animal>): void
-        -eat(Object): void
+        +move(Map): void
+        #reproduction(List<Animal>): void
+        #eat(Object): void
     }
     class Elephant{
         -{static}quantity: int
         +Elephant(Position)
-        +getPosition():Position
-        +setPosition(Position):void
-        +move(int, int): void
-        -reproduction(List<Animal>): void
-        -eat(Object): void
+        +move(Map): void
+        #reproduction(List<Animal>): void
+        #eat(Object): void
     }
     class Lion{
         -{static}quantity: int
         +Lion(Position)
-        +getPosition():Position
-        +setPosition(Position):void
-        +move(int, int): void
-        -reproduction(List<Animal>): void
-        -eat(Object): void
+        +move(Map): void
+        #reproduction(List<Animal>): void
+        #eat(Object): void
         -attack(Object): void
     }
 
@@ -54,25 +46,17 @@ package safari.plants{
         #position: Position
         +Plant(Position)
         +getEnergyValue(): int
-        +getPosition():Position
-        +setPosition(Position):void
     }
     class Grass{
         -{static}quantity: int
         +Grass(Position)
-        +getEnergyValue(): int
-        +getPosition():Position
-        +setPosition(Position):void
     }
     class Tree{
         -{static}quantity: int
         -leavesQuantity: int
         +Three(Position)
-        +getEnergyValue(): int
         +getLeavesQuantity(): int
         +decreaseLeavesQuantity(): int
-        +getPosition():Position
-        +setPosition(Position):void
     }
     note top of Tree: energyValue to wartość odżywcza \n jednego listka w tym przypadku
 
@@ -82,13 +66,10 @@ package safari.plants{
 
 package safari.human{
     class Human{
-        -position: Position
         -gun: Gun
-        -lookForTheAim(List<Animals>): Position
         +Human(Position)
-        +getPosition():Position
-        +setPosition(Position):void
         +shoot(Position): void
+        -lookForTheAim(List<Animals>): Position
     }
     class Gun{
         ~quantityOfBullets: int
@@ -100,39 +81,58 @@ package safari.human{
 
 package safari{
     class Safari{
-        +width: int
-        +height: int
-        +safari:Object[][]
-        +allAnimals: List<Animal>
+        -maxIter: int
+        -map: Map
+        -allAnimals: List<Animal>
         +Safari(int, int)
-        +main(String[]):void
+        +getMap():Map
+        +getAllAnimals():List<Animal>
+        +placeRandomSafariObjects():void
+        +{static}main(String[]):void
     }
 
-    Safari o-- Animal
-    Safari o-- Plant
-    Safari o-- Human
+    class Map{
+        -width: int
+        -height: int
+        -map:SafariObject[][]
+        -freePositions:List<Position>
+        +Map(int, int)
+        +getWidth(): int
+        +getHeight(): int
+        +removeFromFreePositions(Position):void
+        +freeUpPosition(Position):void
+        +getOneOfFreePositions():Position
+        +checkWhatsOnPosition(Position):SafariObject
+        +placeSafariObject(SafariObject, Position):void
+    }
+
+    abstract class SafariObject{
+        #position: Position
+        +getPosition():Position
+        +setPosition(Position):void
+        +disappear():void
+    }
+    Safari *-- Map
+    Safari o-- SafariObject
+    Map o-right- SafariObject
+    SafariObject <|-- Animal
+    SafariObject <|-- Plant
+    SafariObject <|-- Human
 }
 package safari.positionSystem{
     class Position{
         -x: int
         -y: int
+        +Position(int, int): void
         +getX(): int
         +getY(): int
         +setX(int): void
         +setY(int):void
-        +Position(int, int): void
-        +{static}randomPosition(): Position
+        +{static}randomPosition(Map): Position
+        +{static}randomFreePosition(Map): Position
     }
-
-    Animal *-- Position
-    Zebra *-- Position
-    Elephant *-- Position
-    Lion *-- Position
-
-    Plant *-- Position
-    Grass *-- Position
-    Tree *-- Position
-    Human *-- Position
+    SafariObject *-right- Position
 }
+note top of Position: Każdy obiekt dziedziczący po klasie SafariObject ma zawierać obiekt Position (nie odwrotnie).\nW każdej epoce symulacji chcę iterować po liście Safari.allAnimals,\naby każde zwierze wykonało ruch. Jeśli nie będzie odpwowiedniego miejsca na jego\nwykonanie zwierze nie wykona ruchu w tej epoce. Jeżeli ruch wykona się poprawnie\nwewnętrzny atrybut zwierzęcia jakim jest Position ulegnie zmianie.\nAle zanim to nastąpi referencja do tego obiektu klasy zwierze zostanie zapisana do tablicy\nMap.map[][] na nowej pozycji którą wskazują atrybuty nowego Position.\nReferencja do tego obiektu zostanie usunięta ze starej pozycji w Map.map[][].
 
 @enduml
