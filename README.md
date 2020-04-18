@@ -6,7 +6,7 @@ Safari owns its map which has width and height. On the safari can live Lions, Ze
 * Lion eats another animals
 * Zebra eats Grass which is growing on Safari
 * Elephant eats leaves from trees 
-* Sometimes on the safari human can appera, he is hunting lions.
+* Sometimes on the safari human can appear he hunts lions.
 
 Durign the simulation organisms have to interact with each others, they are eating, dying, losing they energy and increasing species abundance.
 
