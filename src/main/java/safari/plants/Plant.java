@@ -1,7 +1,7 @@
 package safari.plants;
 
 import safari.Position;
-import safari.Safari;
+import safari.SafariMap;
 import safari.SafariObject;
 
 /**
@@ -14,10 +14,11 @@ public abstract class Plant extends SafariObject {
     /**
      * Makes Plant object and put it on Safari
      * @param position Position to put the Plant on it
-     * @param safari on this Safari Plant will exists
+     * @param map SafariMap where Plant is going to be placed
      */
-    public Plant(Position position, Safari safari){
-        safari.getMap().placeSafariObject(this, position, safari);
+    public Plant(Position position, SafariMap map){
+        map.placeSafariObject(this, position);
+        System.out.println("Dodano: "+ this.getClass().getSimpleName() + " na pozycje: " + position.toString());
     }
 
     /**

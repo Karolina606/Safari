@@ -1,6 +1,6 @@
 package safari;
 
-import java.util.Objects;
+import java.util.Random;
 
 /**
  * Calss to handle with positions and coordinates
@@ -58,6 +58,36 @@ public class Position {
     public void setPosition(int x, int y) {
         this.x = x;
         this.y = y;
+    }
+
+    /**
+     * Gives random position on SafariMap
+     * @param map SafariMap to find position on
+     * @return position on SafariMap
+     */
+    public static Position randomPosition(SafariMap map){
+        Random rand = new Random();
+        //losujemy jedną z wszystkich pozycji na mapie nie ważne czy jest zajęta czy nie
+        int randIndex = rand.nextInt(map.getHeight()*map.getWidth());
+        //z wszystkich pozycji wybieramy tą która znajduje się pod wylosowanym indeksem
+        return map.getAllPositions().get(randIndex);
+    }
+
+    /**
+     * Gives free random position on SafariMap
+     * @param map SafariMap to find position on
+     * @return free position on SafariMap or Position (-1, -1) when there is no free Positions
+     */
+    public static Position randomFreePosition(SafariMap map){
+        return map.getFreePosition();
+    }
+
+
+    public boolean equals(int x, int y) {
+        if(this.x == x && this.y == y)
+            return true;
+        else
+            return false;
     }
 
     /**

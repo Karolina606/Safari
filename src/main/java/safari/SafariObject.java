@@ -28,10 +28,17 @@ public class SafariObject {
     }
 
     /**
-     * Remove SafariObject from Safari
+     * Makes living organis to do action
+     * @param map SafariMap where living organism makes action
      */
-    public void disappear(Safari safari){
-        safari.getMap().freeUpPosition(position, safari);
+    public void makeAction(SafariMap map){}
 
+    /**
+     * Remove SafariObject from Safari
+     * @param map SafariMap where object lives
+     */
+    public void disappear(SafariMap map){
+        map.freeUpPosition(this.position);
+        System.out.println("Zniknął obiekt: " + this.getClass().getSimpleName());
     }
 }

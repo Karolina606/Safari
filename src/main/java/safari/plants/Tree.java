@@ -1,7 +1,7 @@
 package safari.plants;
 
 import safari.Position;
-import safari.Safari;
+import safari.SafariMap;
 
 public class Tree extends Plant{
     private int quantity = 0;
@@ -10,10 +10,10 @@ public class Tree extends Plant{
      * Makes Tree object and put it on Safari, sets energyValue on 1 and leavesQuantity to 20
      *
      * @param position Position to put the Plant on it
-     * @param safari   on this Safari Plant will exists
+     * @param map SafariMap where Tree is going to be placed
      */
-    public Tree(Position position, Safari safari) {
-        super(position, safari);
+    public Tree(Position position, SafariMap map) {
+        super(position, map);
         super.energyValue = 1;
         leavesQuantity = 20;
         quantity++;

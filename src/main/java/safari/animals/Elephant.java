@@ -1,17 +1,70 @@
 package safari.animals;
 
 import safari.Position;
-import safari.Safari;
 import safari.SafariMap;
+import safari.SafariObject;
+import safari.plants.Tree;
 
 public class Elephant extends Animal{
-    public static int quantity = 0;
+    private static int quantity = 0;
+    private Tree tree;
 
-    public Elephant(Position position,  Safari safari){
-        super(position, safari);
+
+    public Elephant(Position position,  SafariMap map){
+        super(position, map);
+        quantity++;
     }
 
-    public void move(int horizontalMax, int verticalMax){
+    @Override
+    public void makeAction(SafariMap map){
+        super.makeAction(map, 0);
+    }
 
+    @Override
+    protected void react(Position position, SafariMap map) {
+        //pobierz obiekt ktory jest na tej pozycji
+        SafariObject object = map.getMap().get(position);
+
+        //reaguj na to co znajduje sie na tej pozycji
+        if(object == null){
+            map.placeSafariObject(this, position);
+        }
+        else if(object instanceof Tree){
+            eat(object);
+        }
+        else if(object instanceof Elephant){
+            reproduction(map);
+        }
+        else{
+            System.out.println("Słoń nie wykonał ruchu");
+        }
+    }
+
+    @Override
+    protected void reproduction(SafariMap map) {
+        //sprawdz czy jest wolna pozycja na safari
+        Position freePosition = Position.randomFreePosition(map);
+        if(freePosition.equals(-1, -1)){
+            System.out.println("Nie ma wolnych pozycji, nie można umieścić nowego słonia");
+        }
+        else{
+            //dodanie nowego zwierzaka pod wskazaną pozycję i do listy zwierzaków
+            new Elephant(freePosition, map);
+            System.out.println("Młody słonik na pozycję: " + freePosition.toString());
+        }
+    }
+
+    @Override
+    protected void eat(SafariObject object) {
+        //down casting
+        Tree tree = (Tree) object;
+        //sprawdz czy ma jeszcze liscie
+        if(tree.getLeavesQuantity() > 0){
+            //zjedz liscia z drzewa
+            tree.decreaseLeavesQuantity();
+            //dodaj sobie energii
+            this.energyLevel += tree.getEnergyValue();
+            System.out.println("Słoń zjadł liść z drzewa");
+        }
     }
 }

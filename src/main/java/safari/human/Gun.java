@@ -1,7 +1,6 @@
 package safari.human;
 
 import safari.Position;
-import safari.Safari;
 import safari.SafariMap;
 
 /**
@@ -21,9 +20,9 @@ public class Gun {
      * Fires the gun to kill Lion
      * it will kill a Lion if it lives on Safari and when there is amunition left
      * @param position position of a Lion
-     * @param safari safari where a Lion lives
+     * @param map SafariMap where a Lion lives
      */
-    public void shoot(Position position, Safari safari){
+    public void shoot(Position position, SafariMap map){
         //jesli nie ma wiecej amunicji
         if(quantityOfBullets <= 0){
             System.out.println("There is no more ammunition");
@@ -34,7 +33,8 @@ public class Gun {
         }
         //jesli na safari jest lew
         else{
-            safari.getMap().freeUpPosition(position, safari);
+            //znajdz lwa który jest na znalezionej pozycji i spraw by zniknął
+            map.getMap().get(position).disappear(map);
         }
     }
 }

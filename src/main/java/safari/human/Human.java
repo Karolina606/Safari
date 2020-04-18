@@ -1,9 +1,8 @@
 package safari.human;
 
 import safari.Position;
-import safari.Safari;
+import safari.SafariMap;
 import safari.SafariObject;
-import safari.animals.Animal;
 import safari.animals.Lion;
 
 import java.util.List;
@@ -17,11 +16,16 @@ public class Human extends SafariObject {
     /**
      *Makes a Human and places it on Safari on pointed Position
      * @param position Postion to place Human in
-     * @param safari Safari he lives on
+     * @param map SafariMap human is going to live on
      */
-    public Human(Position position, Safari safari){
-        safari.getMap().placeSafariObject(this, position, safari);
+    public Human(Position position, SafariMap map){
+        map.placeSafariObject(this, position);
         gun = new Gun();
+        System.out.println("Dodano: "+ this.getClass().getSimpleName() + " na pozycje: " + position.toString());
+    }
+
+    public void makeAction(SafariMap map){
+        shoot(lookForTheAim(map.getAllAnimalsAndHumans()), map);
     }
 
     /**
@@ -29,9 +33,9 @@ public class Human extends SafariObject {
      * @param listOfAnimals list of all Animals on the Safari
      * @return Lion's Position if Lion is on the Safari, returns new Point (-1, -1) if it is not there
      */
-    private Position lookForTheAim(List<Animal> listOfAnimals){
+    private Position lookForTheAim(List<SafariObject> listOfAnimals){
         //szuka lwa na liście wszystkich zwierząt
-        for(Animal animal: listOfAnimals){
+        for(SafariObject animal: listOfAnimals){
             if(animal instanceof Lion){
                 return animal.getPosition();
             }
@@ -43,9 +47,9 @@ public class Human extends SafariObject {
     /**
      * Tries to shoot the Lion on found Position, Position
      * @param position possible Posible of the Lion or Position (-1, -1) if it is not on Safari
-     * @param safari Safari where Lion lives
+     * @param map SafariMap where Lion lives
      */
-    public void shoot(Position position, Safari safari){
-        gun.shoot(lookForTheAim(safari.getAllAnimals()), safari);
+    public void shoot(Position position, SafariMap map){
+        gun.shoot(lookForTheAim(map.getAllAnimalsAndHumans()), map);
     }
 }
