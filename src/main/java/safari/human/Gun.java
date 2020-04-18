@@ -35,6 +35,7 @@ public class Gun {
         else{
             //znajdz lwa który jest na znalezionej pozycji i spraw by zniknął
             map.getMap().get(position).disappear(map);
+            System.out.println("Human zastrzelił Lion");
         }
     }
 }
