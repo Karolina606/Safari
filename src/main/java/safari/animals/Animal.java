@@ -10,13 +10,16 @@ public abstract class Animal extends SafariObject {
     int energyLevel = 20;
     int sleepTime = 0;
     boolean isAsleep = false;
-    public Position position;
     //liczba ruchow dla poszczegolnych gatunkow w zaleznosci od ich poziomu energii
     //pierwszy indeks numer zwierzecia {0 = Elephant, 1 = Zebra, 2 = Lion}
     //drugi indeks to numer stanu energetycznego {0 = [1,6], 1 = [7, 14], 2 = [15, up]}
     protected final int[][] animalsMovesOnEnergy = {{1, 2, 3}, {1, 3, 4}, {1, 4, 5}};
+    private static int idCount = 0;
+    protected int id;
 
     public Animal(Position position, SafariMap map){
+        this.id = idCount;
+        idCount++;
         this.position = position;
         map.placeSafariObject(this, position);
         //place in allAnimals
@@ -105,6 +108,12 @@ public abstract class Animal extends SafariObject {
         return "Position: " + Integer.toString(position.getX()) + ", " + Integer.toString(position.getY());
     }
 
+    public String objectToFile(){
+        // class, id, energyLevel, isAsleep, sleepTime, (x;y)
+        return getClass().getSimpleName() + ", " + id + ", " + energyLevel + ", " + isAsleep + ", " + sleepTime + ", " + "(" + position.getX() + " " + position.getY() + ")";
+    }
+
+
     @Override
     public void disappear(SafariMap map){
         super.disappear(map);
@@ -118,7 +127,8 @@ public abstract class Animal extends SafariObject {
     @Override
     public String toString() {
         return this.getClass().getSimpleName()+ "{" +
-                "energyLevel=" + energyLevel +
+                "id= " + id +
+                ", energyLevel=" + energyLevel +
                 ", isAsleep=" + isAsleep +
                 ", sleepTime=" + sleepTime +
                 ", position=" + position.toString() +

@@ -37,7 +37,7 @@ public class Zebra extends Animal{
             map.placeSafariObject(this, position);
             decreaseEnergy();
         }
-        else if(object instanceof Zebra){
+        else if(object instanceof Zebra && position != this.getPosition()){
             reproduction(map);
             decreaseEnergy();
         }
@@ -53,7 +53,6 @@ public class Zebra extends Animal{
         else{
             //dodanie nowego zwierzaka pod wskazaną pozycję i do listy zwierzaków
             new Zebra(freePosition, map);
-            //System.out.println("Młoda zebra na pozycję: " + freePosition.toString());
         }
     }
 
@@ -63,6 +62,12 @@ public class Zebra extends Animal{
         //zjada trawe wiec jej energia rosnie
         energyLevel += grass.getEnergyValue();
         grass.disappear(map);
+    }
+
+    @Override
+    public String objectToFile() {
+        // class, id, energyLevel, isAsleep, sleepTime, (x;y), quantity
+        return super.objectToFile() + ", " + quantity;
     }
 
     @Override

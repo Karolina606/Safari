@@ -8,7 +8,7 @@ package safari;
  * @author karolina
  *
  */
-public class SafariObject {
+public abstract class SafariObject {
     protected Position position;
 
     /**
@@ -28,7 +28,7 @@ public class SafariObject {
     }
 
     /**
-     * Makes living organis to do action
+     * Makes living organism to do action
      * @param map SafariMap where living organism makes action
      */
     public void makeAction(SafariMap map){}

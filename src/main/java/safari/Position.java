@@ -27,27 +27,11 @@ public class Position {
     }
 
     /**
-     * Sets horizontal coordinates
-     * @param x horizontal coordinate wanted to set
-     */
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    /**
      * Gets vertical coordinate
      * @return y vertical coordinate
      */
     public int getY() {
         return y;
-    }
-
-    /**
-     * Sets vertical coordinates
-     * @param y vertical coordinate wanted to set
-     */
-    public void setY(int y) {
-        this.y = y;
     }
 
     /**

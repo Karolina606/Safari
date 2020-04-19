@@ -7,8 +7,6 @@ import safari.plants.Tree;
 
 public class Elephant extends Animal{
     private static int quantity = 0;
-    private Tree tree;
-
 
     public Elephant(Position position,  SafariMap map){
         super(position, map);
@@ -33,7 +31,7 @@ public class Elephant extends Animal{
         else if(object instanceof Tree){
             eat(object);
         }
-        else if(object instanceof Elephant){
+        else if(object instanceof Elephant && position != this.getPosition()){
             reproduction(map);
         }
     }
@@ -48,7 +46,6 @@ public class Elephant extends Animal{
         else{
             //dodanie nowego zwierzaka pod wskazaną pozycję i do listy zwierzaków
             new Elephant(freePosition, map);
-            //System.out.println("Młody słonik na pozycję: " + freePosition.toString());
         }
     }
 
@@ -64,6 +61,12 @@ public class Elephant extends Animal{
             this.energyLevel += tree.getEnergyValue();
             System.out.println("Słoń zjadł liść z drzewa");
         }
+    }
+
+    @Override
+    public String objectToFile(){
+        // class, id, energyLevel, isAsleep, sleepTime, (x;y), quantity
+        return super.objectToFile() + ", " + quantity;
     }
 
     @Override

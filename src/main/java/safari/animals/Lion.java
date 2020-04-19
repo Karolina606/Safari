@@ -32,7 +32,7 @@ public class Lion extends Animal{
             map.placeSafariObject(this, position);
             decreaseEnergy();
         }
-        else if(object instanceof Lion){
+        else if(object instanceof Lion && position != this.getPosition()){
             reproduction(map);
             decreaseEnergy();
         }
@@ -48,7 +48,6 @@ public class Lion extends Animal{
         else{
             //dodanie nowego zwierzaka pod wskazaną pozycję i do listy zwierzaków
             new Lion(freePosition, map);
-            //System.out.println("Młode lwiątko na pozycję: " + freePosition.toString());
         }
     }
 
@@ -66,6 +65,12 @@ public class Lion extends Animal{
     private void attack(SafariObject object, SafariMap map){
         System.out.println("Lew atakuje: " + object.getClass().getSimpleName());
         eat(object, map);
+    }
+
+    @Override
+    public String objectToFile() {
+        // class, id, energyLevel, isAsleep, sleepTime, (x;y), quantity
+        return super.objectToFile() + ", " + quantity;
     }
 
     @Override

@@ -46,7 +46,7 @@ public class Human extends SafariObject {
 
     /**
      * Tries to shoot the Lion on found Position, Position
-     * @param position possible Posible of the Lion or Position (-1, -1) if it is not on Safari
+     * @param position possible Position of the Lion or Position (-1, -1) if it is not on Safari
      * @param map SafariMap where Lion lives
      */
     public void shoot(Position position, SafariMap map){

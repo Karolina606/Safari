@@ -96,12 +96,15 @@ public class SafariMap{
             Random rand = new Random();
             //losuje indeks w zakresie wielkości listy wolnych pozycji
             int randomIndex = rand.nextInt(freePositions.size());
-            return freePositions.get(randomIndex);
+            Position position = freePositions.get(randomIndex);
+            removeFromFreePositions(position);
+            return position;
         }
     }
 
     // umieszcza obiekt tylko w SafariMap
     public void placeSafariObject(SafariObject object, Position position){
+
         if(object.getPosition() != null){
             freeUpPosition(object.getPosition());
         }
@@ -109,7 +112,8 @@ public class SafariMap{
         //stawia obiekt na nowe miejsce
         map.put(position, object);
         //zapisanie wewnątrz obiektu nowej pozycji
-        object.position = position;
+        object.setPosition(position);
+
         //System.out.println("Freeplace size: " + freePositions.size());
         //zabierz zajeta pozycje z listy wolnych
         freePositions.remove(position);
@@ -117,9 +121,9 @@ public class SafariMap{
     }
 
     public void printSafariMap(){
-        for(SafariObject obj: map.values()){
-            if(obj instanceof Animal){
-                System.out.println(obj.toString());
+        for(Position pos: map.keySet()){
+            if(map.get(pos) instanceof Animal){
+                System.out.println(pos.toString() + "-------> "+ map.get(pos) .toString());
             }
             else{
                 System.out.println("null");
