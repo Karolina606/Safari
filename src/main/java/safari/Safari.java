@@ -45,7 +45,7 @@ public class Safari {
         List<Integer> defaultIterations = new ArrayList<>();
         defaultIterations.add(10);
         List<Integer> defaultAnimals = new ArrayList<>();
-        defaultIterations.add(1);
+        defaultAnimals.add(1);
 
         parser.addArgument("-width", "-w").type(Integer.class).nargs(1).setDefault(defaultDimensions).help("Safari width");
         parser.addArgument("-height", "-he").type(Integer.class).nargs(1).setDefault(defaultDimensions).help("Safari height");
@@ -75,7 +75,9 @@ public class Safari {
             safari.tryToPutHumanOnSafari();
 
             //zapisz stan poczatkowy
-            safari.saveToRaportArray(map.getAllAnimalsAndHumans(), 0);
+            if(i == 0){
+                safari.saveToRaportArray(map.getAllAnimalsAndHumans(), i);
+            }
 
             //zwierzeta
             SafariObject currentSafariObject;
