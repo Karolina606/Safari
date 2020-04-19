@@ -21,7 +21,7 @@ public abstract class Animal extends SafariObject {
         map.placeSafariObject(this, position);
         //place in allAnimals
         map.getAllAnimalsAndHumans().add(this);
-        System.out.println("Dodano: "+ this.getClass().getSimpleName() + " na pozycje: " + position.toString());
+        System.out.println("Młody/młoda "+ this.getClass().getSimpleName() + " na pozycje: " + position.toString());
     }
 
     public void makeAction(SafariMap map, int spieceNumber){
@@ -35,10 +35,12 @@ public abstract class Animal extends SafariObject {
                 //jesli spi i poziom energii jest nadal mniejszy niz 4 pozwol spac dalej
                 energyLevel++; // zwieksz energie
                 sleepTime++;
+                System.out.println(this.getClass().getSimpleName() + " śpi");
             }
             else{
                 //jesli poziom energii wzrosl juz powyzej 4 obodz zwierzaka
                 isAsleep = false;
+                System.out.println(this.getClass().getSimpleName() + " obudził się");
             }
         }
         //jesli zwierze nie spi a poziom energii jest bardzo niski < 4
@@ -49,6 +51,7 @@ public abstract class Animal extends SafariObject {
             if(probability.nextInt(100) < 70){
                 isAsleep = true;
                 sleepTime++;
+                System.out.println(this.getClass().getSimpleName() + " zasnął");
             }
             else{
                 //jesli zwierze nie zasnelo wykonaj ruch
@@ -77,7 +80,10 @@ public abstract class Animal extends SafariObject {
         //sprobuj wykonac ruch
         Position nextPosition = Position.randomPosition(map);
         this.react(nextPosition, map);
-        //po probie wykonania ruchu odejmij energie jaka zwierze utracilo na probe przemieszczenia
+    }
+
+    protected void decreaseEnergy(){
+        //odejmij energie jaka zwierze utracilo na probe przemieszczenia
         if(energyLevel-2 >= 0){
             //jezeli jeszcze ma sily to podczas ruchu odejmuje sie mu dwie jednostki energii
             this.energyLevel-=2;

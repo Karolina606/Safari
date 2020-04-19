@@ -13,7 +13,7 @@ public class Gun {
      *Makes Gun object and sets it's quantityOfBullets to 10
      */
     public Gun(){
-        quantityOfBullets = 10;
+        quantityOfBullets = 5;
     }
 
     /**
@@ -25,11 +25,11 @@ public class Gun {
     public void shoot(Position position, SafariMap map){
         //jesli nie ma wiecej amunicji
         if(quantityOfBullets <= 0){
-            System.out.println("There is no more ammunition");
+            System.out.println("Nie ma więcej amunicji");
         }
         //jesli nie ma lwa na safari
         else if(position.getX() == -1 && position.getY() == -1){
-            System.out.println("There is no lion to hunt");
+            System.out.println("Na safari nie ma lwa do polowania");
         }
         //jesli na safari jest lew
         else{

@@ -30,15 +30,16 @@ public class Zebra extends Animal{
         //reaguj na to co znajduje sie na tej pozycji
         if(object == null){
             map.placeSafariObject(this, position);
+            decreaseEnergy();
         }
         else if(object instanceof Grass){
             eat(object, map);
+            map.placeSafariObject(this, position);
+            decreaseEnergy();
         }
         else if(object instanceof Zebra){
             reproduction(map);
-        }
-        else{
-            System.out.println("Zebra nie wykonała ruchu");
+            decreaseEnergy();
         }
     }
 
@@ -52,7 +53,7 @@ public class Zebra extends Animal{
         else{
             //dodanie nowego zwierzaka pod wskazaną pozycję i do listy zwierzaków
             new Zebra(freePosition, map);
-            System.out.println("Młoda zebra na pozycję: " + freePosition.toString());
+            //System.out.println("Młoda zebra na pozycję: " + freePosition.toString());
         }
     }
 
@@ -64,4 +65,9 @@ public class Zebra extends Animal{
         grass.disappear(map);
     }
 
+    @Override
+    public void disappear(SafariMap map) {
+        super.disappear(map);
+        quantity--;
+    }
 }

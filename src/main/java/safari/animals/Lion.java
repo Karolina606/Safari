@@ -3,7 +3,6 @@ package safari.animals;
 import safari.Position;
 import safari.SafariMap;
 import safari.SafariObject;
-import safari.human.Human;
 
 public class Lion extends Animal{
     private static int quantity = 0;
@@ -26,15 +25,16 @@ public class Lion extends Animal{
         //reaguj na to co znajduje sie na tej pozycji
         if(object == null){
             map.placeSafariObject(this, position);
+            decreaseEnergy();
         }
-        else if(object instanceof Zebra || object instanceof Elephant || object instanceof Human){
+        else if(object instanceof Zebra || object instanceof Elephant){
             attack(object, map);
+            map.placeSafariObject(this, position);
+            decreaseEnergy();
         }
         else if(object instanceof Lion){
             reproduction(map);
-        }
-        else{
-            System.out.println("Lew nie wykonał ruchu");
+            decreaseEnergy();
         }
     }
 
@@ -48,21 +48,17 @@ public class Lion extends Animal{
         else{
             //dodanie nowego zwierzaka pod wskazaną pozycję i do listy zwierzaków
             new Lion(freePosition, map);
-            System.out.println("Młode lwiątko na pozycję: " + freePosition.toString());
+            //System.out.println("Młode lwiątko na pozycję: " + freePosition.toString());
         }
     }
 
     protected void eat(SafariObject object, SafariMap map) {
-        //dodawanie energii z jedzenia, słoń daje najwięcej energii, zebra mniej, człowiek najmniej
+        //dodawanie energii z jedzenia, słoń daje więcej energii, zebra mniej
         if(object instanceof Elephant){
             energyLevel += 8;
         }
         else if(object instanceof Zebra){
             energyLevel += 6;
-        }
-        else{
-            //to musi być człowiek
-            energyLevel += 3;
         }
         object.disappear(map);
     }
@@ -70,5 +66,11 @@ public class Lion extends Animal{
     private void attack(SafariObject object, SafariMap map){
         System.out.println("Lew atakuje: " + object.getClass().getSimpleName());
         eat(object, map);
+    }
+
+    @Override
+    public void disappear(SafariMap map) {
+        super.disappear(map);
+        quantity--;
     }
 }

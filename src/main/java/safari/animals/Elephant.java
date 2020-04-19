@@ -28,15 +28,13 @@ public class Elephant extends Animal{
         //reaguj na to co znajduje sie na tej pozycji
         if(object == null){
             map.placeSafariObject(this, position);
+            decreaseEnergy();
         }
         else if(object instanceof Tree){
             eat(object);
         }
         else if(object instanceof Elephant){
             reproduction(map);
-        }
-        else{
-            System.out.println("Słoń nie wykonał ruchu");
         }
     }
 
@@ -50,7 +48,7 @@ public class Elephant extends Animal{
         else{
             //dodanie nowego zwierzaka pod wskazaną pozycję i do listy zwierzaków
             new Elephant(freePosition, map);
-            System.out.println("Młody słonik na pozycję: " + freePosition.toString());
+            //System.out.println("Młody słonik na pozycję: " + freePosition.toString());
         }
     }
 
@@ -66,5 +64,11 @@ public class Elephant extends Animal{
             this.energyLevel += tree.getEnergyValue();
             System.out.println("Słoń zjadł liść z drzewa");
         }
+    }
+
+    @Override
+    public void disappear(SafariMap map) {
+        super.disappear(map);
+        quantity--;
     }
 }
