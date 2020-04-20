@@ -44,14 +44,11 @@ In every iteration informations about animals are saved to "Safari/raport.csv"
 Diagrams
 ---
 #### First class diagram
-
-|-![alt text](https://github.com/Karolina606/Safari/blob/master/doc/diagrams/png/classDiagram.png "class diagram")-|
+![alt text](https://github.com/Karolina606/Safari/blob/master/doc/diagrams/png/classDiagram.png "class diagram")
 
 #### Activity diagram
-
-|-![alt text](https://github.com/Karolina606/Safari/blob/master/doc/diagrams/png/activityDiagram.png "class diagram")-|
+![alt text](https://github.com/Karolina606/Safari/blob/master/doc/diagrams/png/activityDiagram.png "class diagram")
 
 #### Sequence diagram
-
-|-![alt text](https://github.com/Karolina606/Safari/blob/master/doc/diagrams/png/sequenceDiagram.png "class diagram")-|
+![alt text](https://github.com/Karolina606/Safari/blob/master/doc/diagrams/png/sequenceDiagram.png "class diagram")
 
