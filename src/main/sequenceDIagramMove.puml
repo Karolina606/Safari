@@ -1,0 +1,35 @@
+@startuml
+title move
+-> Animal
+activate Animal
+loop times appropriate to energyLevel
+    Animal -> Position: ask for random position
+    activate Position
+    Position --> Animal: random position
+    deactivate Position
+
+    Animal -> SafariMap: what is on position
+    activate SafariMap
+    SafariMap --> Animal: return SafariObject from position
+    deactivate SafariMap
+
+    alt position empty
+        Animal -> SafariMap: place on position
+        SafariMap -> SafariMap: place animal on position
+        Animal -> Animal: decrease energy
+    else object to eat
+        Animal -> SafariObject: eat that object
+        SafariObject -> SafariMap: delete object from map
+        Animal -> Animal: increase energy
+    else object the same type
+        Animal -> SafariObject: reproduct
+        Animal -> SafariMap: place new object of this type on map
+    else another object
+        Animal -> Animal: don't move
+    end
+
+end
+
+<- Animal
+deactivate Animal
+@enduml

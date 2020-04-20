@@ -4,7 +4,7 @@ start
 if(What kind of object makeAction?) then(Animal)
     :Check energy level;
     if(energyLevel is low) then (yes)
-        :Fall asleep;
+        :Sleep;
     else(no)
         :Make moves;
     endif

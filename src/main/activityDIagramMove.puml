@@ -1,5 +1,5 @@
 @startuml
-title makeMoves
+title move
 start
 repeat
 -Generate random position

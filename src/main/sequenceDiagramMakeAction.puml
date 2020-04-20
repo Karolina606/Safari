@@ -1,0 +1,25 @@
+@startuml
+title makeAction
+SafariObject -> SafariObject: which type am I?
+alt I am an Animal
+    SafariObject -> Animal
+    Animal->Animal: check energyLevel
+    alt energyLevel is low
+        Animal -> Animal: sleep
+    else energyLevel is enough
+        Animal -> Animal: how many moves should I do (base on energyLevel)?
+        Animal -> Animal: make your moves
+    end
+
+else I am a Human
+    SafariObject -> Human
+    Human -> SafariMap: Look for aLion on map
+    alt there is a Lion on Safari
+        SafariMap --> Human: Lion's position
+        Human -> Lion: shoot
+        Lion -> SafariMap: delete me
+    else there is no Lion on Safari
+        Human -> Human: do nothing
+    end
+end
+@enduml

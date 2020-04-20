@@ -1,0 +1,22 @@
+@startuml
+title Simulation sequence diagram
+User -> Safari: give parameters
+Safari -> Safari: make SafariMap
+Safari -> SafariMap: place Animals and Plants
+loop all iterations of simulation
+   Safari -> SafariMap: try to place Human (with some probability)
+   alt human is placed
+        Safari -> Human: make action
+        Human -> SafariMap: look for the Lion
+        SafariMap --> Human: Lion's position
+        Human -> Lion: shoot
+        Lion -> Lion: die
+   end
+   Safari -> SafariMap: give list of Animals
+   SafariMap --> Safari: list of Animals
+   loop for every Animal on list
+       Safari -> Animal: make action
+       Safari -> Safari: save informations about Animals
+   end
+end
+@enduml
