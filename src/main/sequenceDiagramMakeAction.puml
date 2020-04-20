@@ -10,16 +10,19 @@ alt I am an Animal
         Animal -> Animal: how many moves should I do (base on energyLevel)?
         Animal -> Animal: make your moves
     end
-
+    Animal -> SafariObject
 else I am a Human
     SafariObject -> Human
     Human -> SafariMap: Look for aLion on map
     alt there is a Lion on Safari
         SafariMap --> Human: Lion's position
         Human -> Lion: shoot
+        activate Lion
         Lion -> SafariMap: delete me
+        deactivate Lion
     else there is no Lion on Safari
         Human -> Human: do nothing
     end
+    Human -> SafariObject
 end
 @enduml

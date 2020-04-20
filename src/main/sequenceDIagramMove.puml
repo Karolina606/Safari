@@ -19,7 +19,9 @@ loop times appropriate to energyLevel
         Animal -> Animal: decrease energy
     else object to eat
         Animal -> SafariObject: eat that object
+        activate SafariObject
         SafariObject -> SafariMap: delete object from map
+        deactivate SafariObject
         Animal -> Animal: increase energy
     else object the same type
         Animal -> SafariObject: reproduct

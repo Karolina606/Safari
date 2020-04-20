@@ -7,9 +7,11 @@ loop all iterations of simulation
    Safari -> SafariMap: try to place Human (with some probability)
    alt human is placed
         Safari -> Human: make action
+        activate Human
         Human -> SafariMap: look for the Lion
         SafariMap --> Human: Lion's position
         Human -> Lion: shoot
+        deactivate Human
         Lion -> Lion: die
    end
    Safari -> SafariMap: give list of Animals
