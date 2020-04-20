@@ -1,57 +1,209 @@
 Iteration: 0
 class, id, energyLevel, isAsleep, sleepTime, position, population
-Lion, 0, 20, false, 0, (1 1), 1
-Zebra, 1, 20, false, 0, (3 2), 1
-Elephant, 2, 20, false, 0, (1 3), 1
+Lion, 0, 20, false, 0, (2 0), 2
+Lion, 1, 20, false, 0, (1 0), 2
+Zebra, 2, 20, false, 0, (2 3), 10
+Zebra, 3, 20, false, 0, (1 1), 10
+Zebra, 4, 20, false, 0, (1 3), 10
+Zebra, 5, 20, false, 0, (0 2), 10
+Zebra, 6, 20, false, 0, (1 2), 10
+Zebra, 7, 20, false, 0, (3 1), 10
+Zebra, 8, 20, false, 0, (3 2), 10
+Zebra, 9, 20, false, 0, (0 3), 10
+Zebra, 10, 20, false, 0, (2 2), 10
+Zebra, 11, 20, false, 0, (0 1), 10
+Elephant, 12, 20, false, 0, (3 3), 4
+Elephant, 13, 20, false, 0, (2 1), 4
+Elephant, 14, 20, false, 0, (0 0), 4
+Elephant, 15, 20, false, 0, (3 0), 4
 
 Iteration: 1
 class, id, energyLevel, isAsleep, sleepTime, position, population
-Lion, 0, 14, false, 0, (3 0), 1
-Zebra, 1, 16, false, 0, (1 0), 1
-Elephant, 2, 17, false, 0, (3 2), 1
+Lion, 0, 38, false, 0, (0 0), 2
+Lion, 1, 30, false, 0, (3 0), 2
+Zebra, 3, 14, false, 0, (3 2), 12
+Zebra, 4, 12, false, 0, (2 0), 12
+Zebra, 5, 16, false, 0, (0 2), 12
+Zebra, 7, 16, false, 0, (2 2), 12
+Zebra, 11, 14, false, 0, (0 1), 12
+Elephant, 12, 20, false, 0, (3 3), 2
+Elephant, 13, 20, false, 0, (2 1), 2
+Zebra, 16, 16, false, 0, (2 3), 12
+Zebra, 17, 12, false, 0, (1 1), 12
+Zebra, 18, 12, false, 0, (1 3), 12
+Zebra, 19, 10, false, 0, (0 3), 12
+Zebra, 20, 14, false, 0, (1 0), 12
+Zebra, 21, 12, false, 0, (1 2), 12
+Zebra, 22, 18, false, 0, (3 1), 12
 
 Iteration: 2
 class, id, energyLevel, isAsleep, sleepTime, position, population
-Zebra, 1, 10, false, 0, (2 2), 1
-Elephant, 2, 13, false, 0, (1 2), 1
+Lion, 0, 54, false, 0, (0 2), 3
+Lion, 1, 38, false, 0, (2 2), 3
+Elephant, 13, 20, false, 0, (2 1), 1
+Zebra, 16, 8, false, 0, (2 3), 12
+Zebra, 18, 4, false, 0, (1 3), 12
+Zebra, 19, 6, false, 0, (0 3), 12
+Zebra, 21, 8, false, 0, (1 2), 12
+Lion, 23, 34, false, 0, (3 2), 3
+Zebra, 24, 20, false, 0, (1 0), 12
+Zebra, 26, 20, false, 0, (3 3), 12
+Zebra, 28, 10, false, 0, (3 1), 12
+Zebra, 29, 14, false, 0, (0 1), 12
+Zebra, 30, 14, false, 0, (0 0), 12
+Zebra, 31, 14, false, 0, (2 0), 12
+Zebra, 32, 14, false, 0, (1 1), 12
+Zebra, 33, 14, false, 0, (3 0), 12
 
 Iteration: 3
 class, id, energyLevel, isAsleep, sleepTime, position, population
-Zebra, 1, 4, false, 0, (3 2), 1
-Elephant, 2, 12, false, 0, (3 3), 1
+Lion, 0, 70, false, 0, (1 2), 14
+Lion, 1, 46, false, 0, (3 0), 14
+Zebra, 16, 4, false, 0, (1 3), 2
+Zebra, 19, 6, false, 0, (0 3), 2
+Lion, 23, 30, false, 0, (0 0), 14
+Lion, 34, 28, false, 0, (3 3), 14
+Lion, 36, 28, false, 0, (1 0), 14
+Lion, 37, 20, false, 0, (2 1), 14
+Lion, 42, 18, false, 0, (2 2), 14
+Lion, 45, 16, false, 0, (0 2), 14
+Lion, 46, 20, false, 0, (3 1), 14
+Lion, 47, 10, false, 0, (3 2), 14
+Lion, 48, 22, false, 0, (1 1), 14
+Lion, 49, 20, false, 0, (2 0), 14
+Lion, 50, 20, false, 0, (2 3), 14
+Lion, 51, 12, false, 0, (0 1), 14
 
 Iteration: 4
 class, id, energyLevel, isAsleep, sleepTime, position, population
-Zebra, 1, 2, false, 0, (3 1), 1
-Elephant, 2, 8, false, 0, (1 0), 1
+Lion, 0, 66, false, 0, (0 3), 16
+Lion, 1, 42, false, 0, (1 3), 16
+Lion, 23, 20, false, 0, (0 0), 16
+Lion, 34, 18, false, 0, (3 3), 16
+Lion, 36, 20, false, 0, (1 0), 16
+Lion, 37, 10, false, 0, (2 1), 16
+Lion, 42, 10, false, 0, (2 2), 16
+Lion, 45, 6, false, 0, (0 2), 16
+Lion, 46, 10, false, 0, (3 1), 16
+Lion, 47, 4, false, 0, (3 2), 16
+Lion, 48, 12, false, 0, (1 1), 16
+Lion, 49, 10, false, 0, (2 0), 16
+Lion, 50, 10, false, 0, (2 3), 16
+Lion, 51, 4, false, 0, (0 1), 16
+Lion, 52, 10, false, 0, (1 2), 16
+Lion, 53, 10, false, 0, (3 0), 16
 
 Iteration: 5
 class, id, energyLevel, isAsleep, sleepTime, position, population
-Zebra, 1, 2, true, 1, (3 1), 1
-Elephant, 2, 4, false, 0, (0 3), 1
+Lion, 0, 58, false, 0, (0 3), 16
+Lion, 1, 34, false, 0, (1 3), 16
+Lion, 23, 12, false, 0, (0 0), 16
+Lion, 34, 8, false, 0, (3 3), 16
+Lion, 36, 10, false, 0, (1 0), 16
+Lion, 37, 2, false, 0, (2 1), 16
+Lion, 42, 4, false, 0, (2 2), 16
+Lion, 45, 4, false, 0, (0 2), 16
+Lion, 46, 4, false, 0, (3 1), 16
+Lion, 47, 2, false, 0, (3 2), 16
+Lion, 48, 4, false, 0, (1 1), 16
+Lion, 49, 2, false, 0, (2 0), 16
+Lion, 50, 2, false, 0, (2 3), 16
+Lion, 51, 4, false, 0, (0 1), 16
+Lion, 52, 2, false, 0, (1 2), 16
+Lion, 53, 2, false, 0, (3 0), 16
 
 Iteration: 6
 class, id, energyLevel, isAsleep, sleepTime, position, population
-Zebra, 1, 3, true, 2, (3 1), 1
-Elephant, 2, 4, false, 0, (0 3), 1
+Lion, 0, 48, false, 0, (0 3), 16
+Lion, 1, 26, false, 0, (1 3), 16
+Lion, 23, 4, false, 0, (0 0), 16
+Lion, 34, 0, false, 0, (3 3), 16
+Lion, 36, 2, false, 0, (1 0), 16
+Lion, 37, 0, false, 0, (2 1), 16
+Lion, 42, 2, false, 0, (2 2), 16
+Lion, 45, 2, false, 0, (0 2), 16
+Lion, 46, 2, false, 0, (3 1), 16
+Lion, 47, 0, false, 0, (3 2), 16
+Lion, 48, 2, false, 0, (1 1), 16
+Lion, 49, 2, true, 1, (2 0), 16
+Lion, 50, 2, true, 1, (2 3), 16
+Lion, 51, 2, false, 0, (0 1), 16
+Lion, 52, 2, true, 1, (1 2), 16
+Lion, 53, 2, true, 1, (3 0), 16
 
 Iteration: 7
 class, id, energyLevel, isAsleep, sleepTime, position, population
-Zebra, 1, 4, true, 3, (3 1), 1
-Elephant, 2, 2, false, 0, (1 2), 1
+Lion, 0, 38, false, 0, (0 3), 16
+Lion, 1, 16, false, 0, (1 3), 16
+Lion, 23, 2, false, 0, (0 0), 16
+Lion, 36, 2, false, 0, (1 0), 16
+Lion, 42, 2, false, 0, (2 2), 16
+Lion, 45, 2, true, 1, (0 2), 16
+Lion, 46, 2, true, 1, (3 1), 16
+Lion, 48, 2, false, 0, (1 1), 16
+Lion, 49, 3, true, 2, (2 0), 16
+Lion, 50, 3, true, 2, (2 3), 16
+Lion, 51, 2, true, 1, (0 1), 16
+Lion, 52, 3, true, 2, (1 2), 16
+Lion, 53, 3, true, 2, (3 0), 16
+Lion, 54, 10, false, 0, (3 3), 16
+Lion, 55, 12, false, 0, (2 1), 16
+Lion, 56, 10, false, 0, (3 2), 16
 
 Iteration: 8
 class, id, energyLevel, isAsleep, sleepTime, position, population
-Zebra, 1, 4, false, 3, (3 1), 1
-Elephant, 2, 2, true, 1, (1 2), 1
+Lion, 0, 28, false, 0, (0 3), 16
+Lion, 1, 8, false, 0, (1 3), 16
+Lion, 23, 2, true, 1, (0 0), 16
+Lion, 36, 2, true, 1, (1 0), 16
+Lion, 42, 0, false, 0, (2 2), 16
+Lion, 45, 3, true, 2, (0 2), 16
+Lion, 46, 3, true, 2, (3 1), 16
+Lion, 48, 2, true, 1, (1 1), 16
+Lion, 49, 4, true, 3, (2 0), 16
+Lion, 50, 4, true, 3, (2 3), 16
+Lion, 51, 3, true, 2, (0 1), 16
+Lion, 52, 4, true, 3, (1 2), 16
+Lion, 53, 4, true, 3, (3 0), 16
+Lion, 54, 2, false, 0, (3 3), 16
+Lion, 55, 4, false, 0, (2 1), 16
+Lion, 56, 2, false, 0, (3 2), 16
 
 Iteration: 9
 class, id, energyLevel, isAsleep, sleepTime, position, population
-Zebra, 1, 2, false, 3, (3 0), 1
-Elephant, 2, 3, true, 2, (1 2), 1
+Lion, 0, 18, false, 0, (0 3), 16
+Lion, 1, 0, false, 0, (1 3), 16
+Lion, 23, 3, true, 2, (0 0), 16
+Lion, 36, 3, true, 2, (1 0), 16
+Lion, 45, 3, true, 2, (0 2), 16
+Lion, 46, 4, true, 3, (3 1), 16
+Lion, 48, 3, true, 2, (1 1), 16
+Lion, 49, 4, false, 3, (2 0), 16
+Lion, 50, 4, false, 3, (2 3), 16
+Lion, 51, 4, true, 3, (0 1), 16
+Lion, 52, 4, false, 3, (1 2), 16
+Lion, 53, 4, false, 3, (3 0), 16
+Lion, 54, 2, true, 1, (3 3), 16
+Lion, 55, 2, false, 0, (2 1), 16
+Lion, 56, 2, true, 1, (3 2), 16
+Lion, 57, 10, false, 0, (2 2), 16
 
 Iteration: 10
 class, id, energyLevel, isAsleep, sleepTime, position, population
-Zebra, 1, 2, true, 4, (3 0), 1
-Elephant, 2, 4, true, 3, (1 2), 1
+Lion, 0, 8, false, 0, (0 3), 16
+Lion, 23, 3, true, 2, (0 0), 16
+Lion, 36, 4, true, 3, (1 0), 16
+Lion, 45, 4, true, 3, (0 2), 16
+Lion, 46, 4, false, 3, (3 1), 16
+Lion, 48, 4, true, 3, (1 1), 16
+Lion, 49, 2, false, 3, (2 0), 16
+Lion, 50, 4, false, 3, (2 3), 16
+Lion, 51, 4, false, 3, (0 1), 16
+Lion, 52, 2, false, 3, (1 2), 16
+Lion, 53, 2, false, 3, (3 0), 16
+Lion, 54, 3, true, 2, (3 3), 16
+Lion, 55, 2, true, 1, (2 1), 16
+Lion, 56, 3, true, 2, (3 2), 16
+Lion, 57, 2, false, 0, (2 2), 16
+Lion, 58, 12, false, 0, (1 3), 16
 

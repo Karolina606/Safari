@@ -1,0 +1,27 @@
+@startuml
+title makeMoves
+start
+repeat
+-Generate random position
+if(What is on position?) then (another object)
+    if(Object of the same type or something to eat?) then (same type)
+        if(There is free position o the Map) then (yes)
+            :Reproduct;
+            :Place new object of that type on random free position;
+        else(no)
+            :Do nothing;
+        endif;
+    else(to eat)
+        :Eat;
+        :Increase energylevel;
+    endif
+else(nothing)
+    :Move to that position;
+
+endif;
+if(All moves for that energyLevel made?) then (no)
+    :Make next move;
+else(yes)
+    stop
+
+@enduml

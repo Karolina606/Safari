@@ -1,0 +1,20 @@
+@startuml
+title makeAction
+start
+if(What kind of object makeAction?) then(Animal)
+    :Check energy level;
+    if(energyLevel is low) then (yes)
+        :Fall asleep;
+    else(no)
+        :Make moves;
+    endif
+else(Human)
+    :Look for Lion to hunt;
+    if(There is a Lion) then (yes)
+        :Shoot;
+    else(no)
+        :Do nothing;
+    endif;
+endif
+stop
+@enduml

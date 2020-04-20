@@ -19,7 +19,7 @@ public class Gun {
     /**
      * Fires the gun to kill Lion
      * it will kill a Lion if it lives on Safari and when there is amunition left
-     * @param position position of a Lion
+     * @param position position of a Lion or (-1, -1) when there is no Lion
      * @param map SafariMap where a Lion lives
      */
     public void shoot(Position position, SafariMap map){

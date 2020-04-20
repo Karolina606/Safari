@@ -1,0 +1,17 @@
+@startuml
+title Simulation diagram
+start
+:Take parameters form user;
+:Place animals and plants on map;
+
+repeat
+partition Simulation {
+    :Every animal and human makeAction;
+    :Save animals informations;
+}
+if( #iterations == #maxIter) then (yes)
+        stop
+    else(no)
+    endif
+
+@enduml

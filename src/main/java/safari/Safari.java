@@ -138,12 +138,24 @@ public class Safari {
         //trawy
         startNumberForSafariObjects = random.nextInt(safariSize/4)+1;
         for(int i = 0; i < startNumberForSafariObjects; i++){
-            new Grass(Position.randomFreePosition(map), map);
+            position = Position.randomFreePosition(map);
+            if(position.equals(-1, -1)){
+                System.out.println("Nie ma wiecej wolnych pozycji");
+            }
+            else {
+                new Grass(position, map);
+            }
         }
         //drzewa
         startNumberForSafariObjects = random.nextInt(safariSize/4)+1;
         for(int i = 0; i < startNumberForSafariObjects; i++){
-            new Tree(Position.randomFreePosition(map), map);
+            position = Position.randomFreePosition(map);
+            if(position.equals(-1, -1)){
+                System.out.println("Nie ma wiecej wolnych pozycji");
+            }
+            else {
+                new Tree(Position.randomFreePosition(map), map);
+            }
         }
     }
 

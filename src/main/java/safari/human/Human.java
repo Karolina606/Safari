@@ -25,7 +25,7 @@ public class Human extends SafariObject {
     }
 
     public void makeAction(SafariMap map){
-        shoot(lookForTheAim(map.getAllAnimalsAndHumans()), map);
+        shoot(map);
     }
 
     /**
@@ -46,10 +46,10 @@ public class Human extends SafariObject {
 
     /**
      * Tries to shoot the Lion on found Position, Position
-     * @param position possible Position of the Lion or Position (-1, -1) if it is not on Safari
      * @param map SafariMap where Lion lives
      */
-    public void shoot(Position position, SafariMap map){
-        gun.shoot(lookForTheAim(map.getAllAnimalsAndHumans()), map);
+    public void shoot(SafariMap map){
+        gun.shoot(position, map);
+        System.out.println("---------");
     }
 }
