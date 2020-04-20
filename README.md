@@ -1,7 +1,7 @@
 # Safari
 Simple simulation of safari live.
 
-### Description
+### Description 
 Safari owns its map which has width and height. On the safari can live Lions, Zebras and Elephants. All of those move and eat.
 * Lion eats another animals
 * Zebra eats Grass which is growing on Safari
@@ -10,7 +10,8 @@ Safari owns its map which has width and height. On the safari can live Lions, Ze
 
 Durign the simulation organisms have to interact with each others, they are eating, dying, losing they energy and increasing species abundance.
 
-### Running the simulation (example)
+Running the simulation (example)
+---
 ```console
 foo@bar:~/.../Safari$ ./gradlew run --args="-width 10 -height 10 -maxIter 20 -lion 1 -zebra 2 -elephant 3"
 ```
@@ -40,12 +41,14 @@ In every iteration informations about animals are saved to "Safari/raport.csv"
 5. In every iteration animals data are saved
 6. Simulation ends, write data to file
 
-### First class diagram
-![alt text](https://github.com/Karolina606/Safari/blob/master/doc/diagrams/png/classDiagram.png "class diagram")
+Diagrams
+---
+#### First class diagram
+|- ![alt text](https://github.com/Karolina606/Safari/blob/master/doc/diagrams/png/classDiagram.png "class diagram") -|
 
-### Activity diagram
-![alt text](https://github.com/Karolina606/Safari/blob/master/doc/diagrams/png/activityDiagram.png "class diagram")
+#### Activity diagram
+|- ![alt text](https://github.com/Karolina606/Safari/blob/master/doc/diagrams/png/activityDiagram.png "class diagram") -|
 
-### Sequence diagram
-![alt text](https://github.com/Karolina606/Safari/blob/master/doc/diagrams/png/sequenceDiagram.png "class diagram")
+#### Sequence diagram
+|- ![alt text](https://github.com/Karolina606/Safari/blob/master/doc/diagrams/png/sequenceDiagram.png "class diagram") -|
 
