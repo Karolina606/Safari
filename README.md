@@ -29,17 +29,23 @@ None of the parameters are necessary, all have its default values:
 
 It is only up to the user which parameters to provide.
 
-In every iteration informations about animals are saved to src:"Safari/raport.csv"
+In every iteration informations about animals are saved to "Safari/raport.csv"
 
 ### Simulation process
 1. Make a map
 2. Place given numbers of animals on safari (positions are random)
 3. Amount of trees and grasses are random (like a position)
+4. In every iteration Human can appear (with some possibility) and hunt a lion
 4. In every iteration all animals make some actions (move, eat, reproduct, attack), population is changing
 5. In every iteration animals data are saved
 6. Simulation ends, write data to file
 
-
-
 ### First class diagram
-![alt text](https://github.com/Karolina606/Safari/blob/master/src/main/documentation/classDiagram.png "class diagram")
+![alt text](https://github.com/Karolina606/Safari/blob/master/doc/diagrams/png/classDiagram.png "class diagram")
+
+### Activity diagram
+![alt text](https://github.com/Karolina606/Safari/blob/master/doc/diagrams/png/activityDiagram.png "class diagram")
+
+### Sequence diagram
+![alt text](https://github.com/Karolina606/Safari/blob/master/doc/diagrams/png/sequenceDiagram.png "class diagram")
+

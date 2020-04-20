@@ -1,0 +1,31 @@
+@startuml
+title Animal state diagram
+scale 350 width
+[*] --> Initialised
+MakingAction: check energyLevel
+Sleeping: increase energyLevel
+NoSleeping: move
+Moving: decrease energyLevel
+Reacting: check met object and react
+Eating: increase energy energyLevel
+Reproducing: make new animal
+Settling: settle down
+Checking: Chceck if enough moves in that iteration
+
+Initialised --> MakingAction
+MakingAction --> Sleeping
+MakingAction --> NoSleeping
+NoSleeping --> Moving
+Moving --> Reacting
+Reacting --> Settling
+Reacting --> Eating
+Reacting --> Reproducing
+
+Settling --> Checking
+Eating --> Checking
+Reproducing --> Checking
+
+Checking --> Moving: yes
+Checking --> [*]: no
+
+@enduml
