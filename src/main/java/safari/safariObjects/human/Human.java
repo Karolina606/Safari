@@ -1,14 +1,15 @@
-package safari.human;
+package safari.safariObjects.human;
 
-import safari.Position;
-import safari.SafariMap;
-import safari.SafariObject;
-import safari.animals.Lion;
+import safari.safariMap.Position;
+import safari.safariMap.SafariMap;
+import safari.safariObjects.SafariObject;
+import safari.safariObjects.animals.Lion;
 
 import java.util.List;
 
 /**
- * Class to handle with Human objects
+ * Class represents human object in simulation
+ * Human is subclass of {@link SafariObject}
  */
 public class Human extends SafariObject {
     private Gun gun;
@@ -20,16 +21,18 @@ public class Human extends SafariObject {
      */
     public Human(Position position, SafariMap map){
         map.placeSafariObject(this, position);
+        map.getAllAnimalsAndHumans().add(this);
         gun = new Gun();
+        this.map = map;
         System.out.println("Dodano: "+ this.getClass().getSimpleName() + " na pozycje: " + position.toString());
     }
 
-    public void makeAction(SafariMap map){
-        shoot(map);
+    public void makeAction(){
+        shoot();
     }
 
     /**
-     * Searchs for Lion on the Safari
+     * Searches for Lion on the Safari
      * @param listOfAnimals list of all Animals on the Safari
      * @return Lion's Position if Lion is on the Safari, returns new Point (-1, -1) if it is not there
      */
@@ -46,10 +49,19 @@ public class Human extends SafariObject {
 
     /**
      * Tries to shoot the Lion on found Position, Position
-     * @param map SafariMap where Lion lives
      */
-    public void shoot(SafariMap map){
-        gun.shoot(position, map);
-        System.out.println("---------");
+    public void shoot(){
+        gun.shoot(lookForTheAim(this.map.getAllAnimalsAndHumans()), this.map);
+        //System.out.println("---------");
+    }
+    /**
+     * Formats information abut Human object to the string
+     * @return String with information about Human object
+     */
+    @Override
+    public String toString() {
+        return "Human "+ "{" +
+                ", position=" + position.toString() +
+                '}';
     }
 }

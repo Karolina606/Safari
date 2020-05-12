@@ -1,11 +1,11 @@
-package safari;
+package safari.safariMap;
 
 import java.util.Random;
 
 /**
  * Calss to handle with positions and coordinates
  */
-public class Position {
+public class Position implements IPosition{
     private int x;
     private int y;
 
@@ -68,10 +68,7 @@ public class Position {
 
 
     public boolean equals(int x, int y) {
-        if(this.x == x && this.y == y)
-            return true;
-        else
-            return false;
+        return this.x == x && this.y == y;
     }
 
     /**

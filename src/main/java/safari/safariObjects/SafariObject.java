@@ -1,15 +1,15 @@
-/**
- * 15.04.2020
- */
-package safari;
+package safari.safariObjects;
+
+import safari.safariMap.Position;
+import safari.safariMap.SafariMap;
 
 /**
- * Class to deal with all object living on Safari
- * @author karolina
- *
+ * Abstract class to deal with all object living on Safari
  */
 public abstract class SafariObject {
     protected Position position;
+    //SafariMap where object lives
+    public SafariMap map;
 
     /**
      *Gets SafarisObject's Position
@@ -29,9 +29,8 @@ public abstract class SafariObject {
 
     /**
      * Makes living organism to do action
-     * @param map SafariMap where living organism makes action
      */
-    public void makeAction(SafariMap map){}
+    public abstract void makeAction();
 
     /**
      * Remove SafariObject from Safari

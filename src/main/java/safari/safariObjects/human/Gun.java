@@ -1,7 +1,7 @@
-package safari.human;
+package safari.safariObjects.human;
 
-import safari.Position;
-import safari.SafariMap;
+import safari.safariMap.Position;
+import safari.safariMap.SafariMap;
 
 /**
  * Class to deal with gun
@@ -36,6 +36,7 @@ public class Gun {
             //znajdz lwa który jest na znalezionej pozycji i spraw by zniknął
             map.getMap().get(position).disappear(map);
             System.out.println("Human zastrzelił Lion");
+            quantityOfBullets--;
         }
     }
 }

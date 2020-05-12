@@ -1,22 +1,23 @@
-package safari.animals;
+package safari.safariObjects.animals;
 
-import safari.Position;
-import safari.SafariMap;
-import safari.SafariObject;
+import safari.safariMap.Position;
+import safari.safariMap.SafariMap;
+import safari.safariObjects.SafariObject;
 
 import java.util.Random;
 
-public abstract class Animal extends SafariObject {
+public abstract class Animal extends SafariObject implements IAnimal{
     int energyLevel = 20;
     int sleepTime = 0;
     boolean isAsleep = false;
-    //liczba ruchow dla poszczegolnych gatunkow w zaleznosci od ich poziomu energii
-    //pierwszy indeks numer zwierzecia {0 = Elephant, 1 = Zebra, 2 = Lion}
-    //drugi indeks to numer stanu energetycznego {0 = [1,6], 1 = [7, 14], 2 = [15, up]}
-    protected final int[][] animalsMovesOnEnergy = {{1, 2, 3}, {1, 3, 4}, {1, 4, 5}};
     private static int idCount = 0;
     protected int id;
 
+    /**
+     * Animal constructor
+     * @param position Position to place new Animal
+     * @param map SafariMap where Animal will live
+     */
     public Animal(Position position, SafariMap map){
         this.id = idCount;
         idCount++;
@@ -24,10 +25,21 @@ public abstract class Animal extends SafariObject {
         map.placeSafariObject(this, position);
         //place in allAnimals
         map.getAllAnimalsAndHumans().add(this);
+        this.map = map;
         System.out.println("Młody/młoda "+ this.getClass().getSimpleName() + " na pozycje: " + position.toString());
     }
 
-    public void makeAction(SafariMap map, int spieceNumber){
+    /**
+     *Makes Animal to take some action
+     * If Animal energyLevel equals 0 Animal dies
+     * If Animal is sleeping and energyLevel still is less then 4 sleep longer
+     * If Animal is sleeping ane energyLevel is now more then 4 wake up the Animal
+     * If Animal is not sleeping but energyLevel is less then 4 Animal fall asleep with 70% probability
+     * If Animal despire to low energyLevel did't fall asleep make one move
+     * If Animal has higher energyLevel make all moves allowed in this energyLevel
+     * @param movesOnEnergy tab with number of moves allowed in all energyLevel (there are 3 energy levels [1,6], [7, 14], [15, up])
+     */
+    public void makeAction(int[] movesOnEnergy){
         //jesli poziom energii spadl do 0 zwierze umiera
         if(energyLevel <= 0){
             disappear(map);
@@ -47,7 +59,7 @@ public abstract class Animal extends SafariObject {
             }
         }
         //jesli zwierze nie spi a poziom energii jest bardzo niski < 4
-        else if(!isAsleep && energyLevel < 4){
+        else if(energyLevel < 4){
             //zwierze moze zaraz umrzec wiec powinno isc spac, ma jednak pewien wybor
             //zasnie z prawdopodobienstwem 70%, losujemy liczby z zakresu do 0-99, jesli wylosujem < 20 zwierze zasnie
             Random probability = new Random();
@@ -58,33 +70,49 @@ public abstract class Animal extends SafariObject {
             }
             else{
                 //jesli zwierze nie zasnelo wykonaj ruch
-                move(map);
+                move();
             }
         }
-        else if(energyLevel <= 6){
+        makeAllMoves(movesOnEnergy);
+    }
+
+    /**
+     * Move Animal on the map, make one step
+     */
+    public void move(){
+        //sprobuj wykonac ruch
+        Position nextPosition = Position.randomPosition(map);
+        this.react(nextPosition);
+    }
+
+    /**
+     * Makes Animal to make all allowed moves in current energyLevel
+     * @param movesOnEnergy tab with number of moves allowed in all energyLevel (there are 3 energy levels [1,6], [7, 14], [15, up])
+     */
+    public void makeAllMoves(int[] movesOnEnergy){
+        if(energyLevel <= 6){
             //kazde zwierz ktore ma poziom energii ponizej i rowne 6 ma jeden ruch do wykonania
-            move(map);
+            for(int i = 0; i < movesOnEnergy[0]; i++){
+                move();
+            }
         }
-        else if(energyLevel > 6 && energyLevel <= 14){
+        else if(energyLevel <= 14){
             //drugi poziom energetyczny, w tabeli animalMovesOnEnergy zapisana jest liczba ruchow dla kazdego zwierzecia, pierwszy indeks - numer zwierzecia, drugi indeks - stan energetyczny
-            for(int i = 0; i < animalsMovesOnEnergy[spieceNumber][1]; i++){
-                move(map);
+            for(int i = 0; i < movesOnEnergy[1]; i++){
+                move();
             }
         }
         else if(energyLevel > 15){
             //trzeci poziom energetyczny, w tabeli animalMovesOnEnergy zapisana jest liczba ruchow dla kazdego zwierzecia, pierwszy indeks numer zwierzecia, drugi indeks - stan energetyczny
-            for(int i = 0; i < animalsMovesOnEnergy[spieceNumber][2]; i++){
-                move(map);
+            for(int i = 0; i < movesOnEnergy[2]; i++){
+                move();
             }
         }
     }
 
-    public void move(SafariMap map){
-        //sprobuj wykonac ruch
-        Position nextPosition = Position.randomPosition(map);
-        this.react(nextPosition, map);
-    }
-
+    /**
+     * Decreases Animal's energyLevel
+     */
     protected void decreaseEnergy(){
         //odejmij energie jaka zwierze utracilo na probe przemieszczenia
         if(energyLevel-2 >= 0){
@@ -96,24 +124,37 @@ public abstract class Animal extends SafariObject {
         }
     }
 
-    public abstract void makeAction(SafariMap map);
+    /**
+     * Reacts to SafariObject on given position
+     * @param position Position to react
+     */
+    protected abstract void react(Position position);
 
-    protected void react(Position position, SafariMap map){}
+    /**
+     * Reproduce Animals
+     * It means place new Animal on the SafariMap
+     */
+    protected abstract void reproduce();
 
-    protected void reproduction(SafariMap map){}
+    /**
+     * Eats given SafariObject
+     * @param object SafariOject to eat
+     */
+    protected abstract void eat(SafariObject object);
 
-    protected void eat(SafariObject object){}
-
-    public String positionToString(){
-        return "Position: " + Integer.toString(position.getX()) + ", " + Integer.toString(position.getY());
-    }
-
-    public String objectToFile(){
+    /**
+     * Formats information about Animal to String appropriate to write it later to csv file
+     * @return String with information about Animal
+     */
+    public String animalToFile(){
         // class, id, energyLevel, isAsleep, sleepTime, (x;y)
         return getClass().getSimpleName() + ", " + id + ", " + energyLevel + ", " + isAsleep + ", " + sleepTime + ", " + "(" + position.getX() + " " + position.getY() + ")";
     }
 
-
+    /**
+     * Makes Animal to disappear
+     * @param map SafariMap where object lives
+     */
     @Override
     public void disappear(SafariMap map){
         super.disappear(map);
@@ -121,8 +162,8 @@ public abstract class Animal extends SafariObject {
     }
 
     /**
-     * Format Animal object to the string
-     * @return String with information about Animal Object
+     * Formats information about Animal object to the string
+     * @return String with information about Animal object
      */
     @Override
     public String toString() {

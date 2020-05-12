@@ -1,11 +1,12 @@
-package safari.plants;
+package safari.safariObjects.plants;
 
-import safari.Position;
-import safari.SafariMap;
-import safari.SafariObject;
+import safari.safariMap.Position;
+import safari.safariMap.SafariMap;
+import safari.safariObjects.SafariObject;
 
 /**
- * Abstract class to deal with plants
+ * Abstract class to deal with plant object
+ * Plant is subclass of {@link SafariObject}
  */
 public abstract class Plant extends SafariObject {
     protected int energyValue;
@@ -18,6 +19,7 @@ public abstract class Plant extends SafariObject {
      */
     public Plant(Position position, SafariMap map){
         map.placeSafariObject(this, position);
+        this.map = map;
         System.out.println("Dodano: "+ this.getClass().getSimpleName() + " na pozycje: " + position.toString());
     }
 
@@ -29,5 +31,8 @@ public abstract class Plant extends SafariObject {
         return energyValue;
     }
 
-
+    @Override
+    public void makeAction() {
+        System.out.println("Plant on position: " + position.toString());
+    }
 }

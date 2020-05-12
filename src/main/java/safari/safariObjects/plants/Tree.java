@@ -1,8 +1,12 @@
-package safari.plants;
+package safari.safariObjects.plants;
 
-import safari.Position;
-import safari.SafariMap;
+import safari.safariMap.Position;
+import safari.safariMap.SafariMap;
 
+/**
+ * Class represents tree object in simulation
+ * Tree is subclass of {@link Plant}
+ */
 public class Tree extends Plant{
     private int quantity = 0;
     private int leavesQuantity;
