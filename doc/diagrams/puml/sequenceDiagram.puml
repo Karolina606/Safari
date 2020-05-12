@@ -6,6 +6,7 @@ Safari -> SafariMap: place Animals and Plants
 loop all iterations of simulation
    Safari -> SafariMap: try to place Human (with some probability)
    alt human is placed
+        Safari -> SafariMap: place human on map
         Safari -> Human: make action
         activate Human
         Human -> SafariMap: look for the Lion
@@ -18,7 +19,7 @@ loop all iterations of simulation
    SafariMap --> Safari: list of Animals
    loop for every Animal on list
        Safari -> Animal: make action
-       Safari -> Safari: save informations about Animals
    end
+    Safari -> Safari: save informations about Animals
 end
 @enduml
