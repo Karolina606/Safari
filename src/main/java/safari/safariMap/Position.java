@@ -6,7 +6,13 @@ import java.util.Random;
  * Calss to handle with positions and coordinates
  */
 public class Position implements IPosition{
+    /**
+     * x coordinate
+     */
     private int x;
+    /**
+     * y coordinate
+     */
     private int y;
 
     /**
@@ -15,7 +21,8 @@ public class Position implements IPosition{
      * @param y vertical coordinate
      */
     public Position(int x, int y){
-        setPosition(x, y);
+        this.x = x;
+        this.y = y;
     }
 
     /**
@@ -34,15 +41,6 @@ public class Position implements IPosition{
         return y;
     }
 
-    /**
-     * Sets vertical and horizontal coordinates
-     * @param x horizontal coordinate wanted to set
-     * @param y vertical coordinate wanted to set
-     */
-    public void setPosition(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
 
     /**
      * Gives random position on SafariMap
@@ -66,23 +64,14 @@ public class Position implements IPosition{
         return map.getFreePosition();
     }
 
-
+    /**
+     * Checks if Position coordinates are the same with given coordinates
+     * @param x x coordinate
+     * @param y y coordinate
+     * @return true if both equals false if not
+     */
     public boolean equals(int x, int y) {
         return this.x == x && this.y == y;
-    }
-
-    /**
-     * Checks if given Object is equals to this object (object calling method)
-     * @param o given Object
-     * @return true if objects are equals and false if objects are not equals
-     */
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Position position = (Position) o;
-        return x == position.x &&
-                y == position.y;
     }
 
     /**

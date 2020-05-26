@@ -9,7 +9,13 @@ import safari.safariObjects.SafariObject;
  * Plant is subclass of {@link SafariObject}
  */
 public abstract class Plant extends SafariObject {
+    /**
+     * Energy value with Plant can give to an Animal
+     */
     protected int energyValue;
+    /**
+     * Position of the Plant
+     */
     protected Position position;
 
     /**
@@ -20,7 +26,7 @@ public abstract class Plant extends SafariObject {
     public Plant(Position position, SafariMap map){
         map.placeSafariObject(this, position);
         this.map = map;
-        System.out.println("Dodano: "+ this.getClass().getSimpleName() + " na pozycje: " + position.toString());
+        //System.out.println("Dodano: "+ this.getClass().getSimpleName() + " na pozycje: " + position.toString());
     }
 
     /**
@@ -29,10 +35,5 @@ public abstract class Plant extends SafariObject {
      */
     public int getEnergyValue(){
         return energyValue;
-    }
-
-    @Override
-    public void makeAction() {
-        System.out.println("Plant on position: " + position.toString());
     }
 }

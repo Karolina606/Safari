@@ -22,8 +22,8 @@ It will start simulation:
 * all argument must be positive number
 
 None of the parameters are necessary, all have its default values:
-* width = 5
-* height = 5
+* width = 10
+* height = 10
 * maxIter = 10
 * lion = 1
 * zebra = 3
@@ -44,12 +44,12 @@ In every iteration information about animals are saved to "Safari/report.csv"
 
 Diagrams
 ---
-#### First class diagram
+#### Class diagram
 ![alt text](https://github.com/Karolina606/Safari/blob/master/doc/diagrams/png/classDiagram.png "class diagram")
 
 #### Activity diagram
-![alt text](https://github.com/Karolina606/Safari/blob/master/doc/diagrams/png/activityDiagram.png "class diagram")
+![alt text](https://github.com/Karolina606/Safari/blob/master/doc/diagrams/png/activityDiagram.png "activity diagram")
 
 #### Sequence diagram
-![alt text](https://github.com/Karolina606/Safari/blob/master/doc/diagrams/png/sequenceDiagram.png "class diagram")
+![alt text](https://github.com/Karolina606/Safari/blob/master/doc/diagrams/png/sequenceDiagram.png "sequence diagram")
 

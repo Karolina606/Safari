@@ -9,15 +9,21 @@ import safari.safariObjects.SafariObject;
  * Lion is subclass of {@link Animal}
  */
 public class Lion extends Animal{
+    /**
+     * Quantity of Lions on the safari
+     */
     private static int quantity = 0;
-    //tablica przechowuje ilosc ruchow do wykonania w zadanych stanach energetycznych {0 = [1,6], 1 = [7, 14], 2 = [15, up]}
-    //0,1,2 --> indeksy
-    //[1,6], [7, 14], [15, up] --> stany energetyczne
+    /**
+     * List contains number of moves available to make on each of three energyLevel ranges <br>
+     * index 0 -> energyLevel range [1,6] <br>
+     * index 1 -> energyLevel range [7, 14] <br>
+     * index 2 -> energyLevel range [15, up] <br>
+     */
     protected static final int[] movesOnEnergy = {1, 4, 5};
 
     /**
-     * Constructor for Lion class
-     * Set new Lion position and place it on a map
+     * Constructor for Lion class <br>
+     * Set new Lion position and place it on a map <br>
      * @param position Position to put new Zebra
      * @param map SafariMap where new Zebra lives
      */
@@ -44,11 +50,11 @@ public class Lion extends Animal{
     }
 
     /**
-     * Reacts to SafariObject on given position
-     * If there is no object relocate to that position
-     * If there is a Zebra or an Elephant attack it and relocate to that position
-     * If there is another Lion reproduce
-     * If there is another SafariObject do not make move it can be dangerous or a tree for example
+     * Reacts to SafariObject on given position <br>
+     * If there is no object relocate to that position <br>
+     * If there is a Zebra or an Elephant attack it and relocate to that position <br>
+     * If there is another Lion reproduce <br>
+     * If there is another SafariObject do not make move it can be dangerous or a tree for example <br>
      * @param position Position to react
      */
     @Override
@@ -73,8 +79,8 @@ public class Lion extends Animal{
     }
 
     /**
-     * Reproduce Animals
-     * It means place new Lion on the SafariMap if there is a free position
+     * Reproduce Animals <br>
+     * It means place new Lion on the SafariMap if there is a free position <br>
      * If there is no more free Positions prints information about that
      */
     @Override
@@ -91,11 +97,11 @@ public class Lion extends Animal{
     }
 
     /**
-     * Eat given SafariObject
-     * Makes the object disappears
-     * Increase Lions's energyLevel
-     * If it is a Elephant increase it with 8
-     * If it is a Zebra increase it with 6
+     * Eat given SafariObject <br>
+     * Makes the object disappears <br>
+     * Increase Lions's energyLevel <br>
+     * If it is a Elephant increase it with 8 <br>
+     * If it is a Zebra increase it with 6 <br>
      * @param object SafariObject to eat
      */
     @Override
@@ -111,9 +117,9 @@ public class Lion extends Animal{
     }
 
     /**
-     * Attack given object
-     * Prints information about that
-     * Eat given SafariObject
+     * Attack given object <br>
+     * Prints information about that <br>
+     * Eat given SafariObject <br>
      * @param object SafariObject to attack
      */
     private void attack(SafariObject object){
@@ -122,7 +128,7 @@ public class Lion extends Animal{
     }
 
     /**
-     * Formats information about Animal to String appropriate to write it later to csv file
+     * Formats information about Animal to String appropriate to write it later to csv file <br>
      * @return String with information about Animal in format:
      *          class, id, energyLevel, isAsleep, sleepTime, (x y), quantity
      */
@@ -133,8 +139,8 @@ public class Lion extends Animal{
     }
 
     /**
-     * Makes the Lion to disappear form SafariMap
-     * Decrease Lions' quantity
+     * Makes the Lion to disappear form SafariMap <br>
+     * Decrease Lions' quantity <br>
      * @param map SafariMap where object lives
      */
     @Override

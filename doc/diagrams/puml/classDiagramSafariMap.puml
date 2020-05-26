@@ -1,0 +1,67 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+    package safari.safariMap{
+        interface ISafariMap{
+            +getWidth():int
+            +getHeight():int
+            +getMap():Map<Position, SafariObject>
+            +getAllAnimalsAndHumans():List<IActionable>
+            +getFreePositions():List<Position>
+            +getAllPositions():List<Position>
+            +removeFromFreePositions(Position):void
+            +freeUpPosition(Position):void
+            +getFreePosition():Position
+            +placeSafariObject(SafariObject, Position):void
+        }
+
+        class SafariMap{
+             -width: int
+                        -height: int
+                        -map:Map<Position, SafariObject>
+                        -allAnimalsAndHumans:List<IActionable>
+                        -allPositions:List<Position>
+                        -freePositions:List<Position>
+                        -animalAmount:int
+                        +SafariMap(int, int)
+                        +getWidth(): int
+                        +getHeight(): int
+                        +getMap(): Map<Postion, SafariObject>
+                        +getAllAnimalsAndHumans():List<IActionable>
+                        +getAllPositions():List<Position>
+                        +getFreePositions():List<Position>
+                        +getFreePosition():Position
+                        +removeFromFreePositions(Position):void
+                        +freeUpPosition(Position):void
+                        +placeSafariObject(SafariObject, Position):void
+                        +increaseAnimalAmount():void
+                        +decreaseAnimalAmount():void
+        }
+
+        class SafariMapCreator{
+            +{static}placeRandomSafariObjects(int, int, int, SafariMap):void
+        }
+
+        interface IPosition{
+            +getX():int
+            +getY():int
+            +equals(int, int):boolean
+        }
+
+        class Position{
+            -x: int
+            -y: int
+            +Position(int, int): void
+            +getX(): int
+            +getY(): int
+            +{static}randomPosition(SafariMap): Position
+            +{static}randomFreePosition(SafariMap): Position
+            +equals(int, int)
+            +toString(): String
+        }
+    }
+
+    ISafariMap <|-- SafariMap
+    IPosition <|-- Position
+
+@enduml

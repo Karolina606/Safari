@@ -1,97 +1,99 @@
 Iteration: 0
 class, id, energyLevel, isAsleep, sleepTime, position, population
-Lion, 0, 20, false, 0, (8 7), 1
 Zebra, 1, 20, false, 0, (8 1), 3
-Zebra, 2, 20, false, 0, (4 0), 3
-Zebra, 3, 20, false, 0, (3 3), 3
-Elephant, 4, 20, false, 0, (5 8), 3
-Elephant, 5, 20, false, 0, (2 4), 3
-Elephant, 6, 20, false, 0, (4 4), 3
+Zebra, 2, 20, false, 0, (0 5), 3
+Zebra, 3, 20, false, 0, (3 0), 3
+Elephant, 4, 20, false, 0, (3 3), 3
+Elephant, 5, 20, false, 0, (0 9), 3
+Elephant, 6, 20, false, 0, (9 2), 3
 
 Iteration: 1
 class, id, energyLevel, isAsleep, sleepTime, position, population
-Lion, 0, 12, false, 0, (2 7), 1
-Zebra, 1, 12, false, 0, (8 2), 3
-Zebra, 2, 12, false, 0, (1 8), 3
-Zebra, 3, 14, false, 0, (8 1), 3
-Elephant, 4, 14, false, 0, (5 1), 3
-Elephant, 5, 14, false, 0, (0 2), 3
-Elephant, 6, 14, false, 0, (1 9), 3
+Zebra, 1, 16, false, 0, (4 9), 3
+Zebra, 2, 16, false, 0, (3 4), 3
+Zebra, 3, 14, false, 0, (7 0), 3
+Elephant, 4, 19, false, 0, (1 6), 3
+Elephant, 5, 20, false, 0, (3 8), 3
+Elephant, 6, 18, false, 0, (0 8), 3
 
 Iteration: 2
 class, id, energyLevel, isAsleep, sleepTime, position, population
-Lion, 0, 4, false, 0, (7 0), 1
-Zebra, 1, 6, false, 0, (4 8), 4
-Zebra, 2, 6, false, 0, (5 5), 4
-Zebra, 3, 8, false, 0, (1 2), 4
-Elephant, 4, 10, false, 0, (5 6), 3
-Elephant, 5, 10, false, 0, (4 4), 3
-Elephant, 6, 13, false, 0, (1 1), 3
-Zebra, 7, 14, false, 0, (2 9), 4
+Zebra, 1, 14, false, 0, (9 8), 3
+Zebra, 2, 12, false, 0, (8 4), 3
+Zebra, 3, 10, false, 0, (6 8), 3
+Elephant, 4, 16, false, 0, (5 5), 3
+Elephant, 5, 20, false, 0, (9 7), 3
+Elephant, 6, 12, false, 0, (1 4), 3
 
 Iteration: 3
 class, id, energyLevel, isAsleep, sleepTime, position, population
-Lion, 0, 2, false, 0, (8 0), 1
-Zebra, 1, 4, false, 0, (7 0), 4
-Zebra, 2, 4, false, 0, (3 9), 4
-Zebra, 3, 2, false, 0, (4 8), 4
-Elephant, 4, 6, false, 0, (1 7), 3
-Elephant, 5, 6, false, 0, (5 8), 3
-Elephant, 6, 11, false, 0, (9 1), 3
-Zebra, 7, 10, false, 0, (4 4), 4
+Zebra, 1, 10, false, 0, (0 7), 3
+Zebra, 2, 10, false, 0, (3 3), 3
+Zebra, 3, 8, false, 0, (2 1), 3
+Elephant, 4, 12, false, 0, (9 9), 3
+Elephant, 5, 14, false, 0, (2 6), 3
+Elephant, 6, 10, false, 0, (9 7), 3
 
 Iteration: 4
 class, id, energyLevel, isAsleep, sleepTime, position, population
-Zebra, 1, 2, false, 0, (3 8), 4
-Zebra, 2, 4, false, 0, (6 3), 4
-Zebra, 3, 0, true, 1, (4 2), 4
-Elephant, 4, 4, false, 0, (8 0), 3
-Elephant, 5, 4, false, 0, (7 4), 3
-Elephant, 6, 7, false, 0, (0 6), 3
-Zebra, 7, 4, false, 0, (7 3), 4
+Zebra, 1, 8, false, 0, (1 2), 3
+Zebra, 2, 8, false, 0, (0 7), 3
+Zebra, 3, 2, false, 0, (3 1), 3
+Elephant, 4, 11, false, 0, (4 1), 3
+Elephant, 5, 12, false, 0, (6 3), 3
+Elephant, 6, 6, false, 0, (9 7), 3
 
 Iteration: 5
 class, id, energyLevel, isAsleep, sleepTime, position, population
-Zebra, 1, 0, true, 1, (3 9), 3
-Zebra, 2, 2, false, 0, (2 1), 3
-Elephant, 4, 4, false, 0, (8 0), 4
-Elephant, 5, 4, false, 0, (7 4), 4
-Elephant, 6, 7, false, 0, (0 6), 4
-Zebra, 7, 2, false, 0, (3 8), 3
-Elephant, 8, 16, false, 0, (1 3), 4
+Zebra, 1, 2, false, 0, (2 1), 3
+Zebra, 2, 4, false, 0, (7 3), 3
+Zebra, 3, 1, false, 0, (4 9), 3
+Elephant, 4, 12, false, 0, (4 1), 3
+Elephant, 5, 13, false, 0, (6 3), 3
+Elephant, 6, 6, false, 0, (9 7), 3
 
 Iteration: 6
 class, id, energyLevel, isAsleep, sleepTime, position, population
-Zebra, 2, 2, false, 0, (2 1), 2
-Elephant, 4, 2, false, 0, (5 8), 4
-Elephant, 5, 2, false, 0, (1 1), 4
-Elephant, 6, 5, false, 0, (5 9), 4
-Zebra, 7, 0, true, 1, (1 4), 2
-Elephant, 8, 10, false, 0, (5 6), 4
+Zebra, 1, 2, true, 1, (2 1), 3
+Zebra, 2, 2, false, 0, (3 8), 3
+Zebra, 3, 1, true, 1, (4 9), 3
+Elephant, 4, 10, false, 0, (1 4), 3
+Elephant, 5, 13, false, 0, (6 3), 3
+Elephant, 6, 4, false, 0, (7 0), 3
 
 Iteration: 7
 class, id, energyLevel, isAsleep, sleepTime, position, population
-Zebra, 2, 2, true, 1, (2 1), 1
-Elephant, 4, -1, false, 0, (1 6), 4
-Elephant, 5, 0, true, 1, (4 1), 4
-Elephant, 6, 3, false, 0, (4 6), 4
-Elephant, 8, 6, false, 0, (7 3), 4
+Zebra, 1, 3, true, 2, (2 1), 3
+Zebra, 2, 2, true, 1, (3 8), 3
+Zebra, 3, 2, true, 2, (4 9), 3
+Elephant, 4, 9, false, 0, (7 3), 3
+Elephant, 5, 9, false, 0, (8 1), 3
+Elephant, 6, 5, false, 0, (7 0), 3
 
 Iteration: 8
 class, id, energyLevel, isAsleep, sleepTime, position, population
-Zebra, 2, 1, true, 2, (9 1), 1
-Elephant, 5, 0, true, 1, (4 1), 3
-Elephant, 6, 0, false, 0, (8 4), 3
-Elephant, 8, 6, false, 0, (7 3), 3
+Zebra, 1, 4, true, 3, (2 1), 3
+Zebra, 2, 3, true, 2, (3 8), 3
+Zebra, 3, 3, true, 3, (4 9), 3
+Elephant, 4, 8, false, 0, (7 6), 3
+Elephant, 5, 5, false, 0, (3 5), 3
+Elephant, 6, 5, false, 0, (7 0), 3
 
 Iteration: 9
 class, id, energyLevel, isAsleep, sleepTime, position, population
-Zebra, 2, 2, true, 3, (9 1), 1
-Elephant, 6, 0, false, 0, (8 4), 2
-Elephant, 8, 4, false, 0, (7 7), 2
+Zebra, 1, 4, false, 3, (2 1), 3
+Zebra, 2, 4, true, 3, (3 8), 3
+Zebra, 3, 4, true, 4, (4 9), 3
+Elephant, 4, 6, false, 0, (6 8), 3
+Elephant, 5, 3, false, 0, (6 1), 3
+Elephant, 6, 3, false, 0, (3 7), 3
 
 Iteration: 10
 class, id, energyLevel, isAsleep, sleepTime, position, population
-Zebra, 2, 1, true, 4, (4 6), 1
-Elephant, 8, 2, false, 0, (3 2), 1
+Zebra, 1, 2, false, 3, (7 6), 3
+Zebra, 2, 4, false, 3, (3 8), 3
+Zebra, 3, 4, false, 4, (4 9), 3
+Elephant, 4, 4, false, 0, (6 3), 3
+Elephant, 5, 1, false, 0, (2 9), 3
+Elephant, 6, 3, true, 1, (3 7), 3
 

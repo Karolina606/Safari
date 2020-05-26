@@ -10,15 +10,21 @@ import safari.safariObjects.plants.Grass;
  * Zebra is subclass of {@link Animal}
  */
 public class Zebra extends Animal{
+    /**
+     * Quantity of Zebras on the safari
+     */
     private static int quantity = 0;
-    //tablica przechowuje ilosc ruchow do wykonania w zadanych stanach energetycznych {0 = [1,6], 1 = [7, 14], 2 = [15, up]}
-    //0,1,2 --> indeksy
-    //[1,6], [7, 14], [15, up] --> stany energetyczne
+    /**
+     * List contains number of moves available to make on each of three energyLevel ranges <br>
+     * index 0 -> energyLevel range [1,6] <br>
+     * index 1 -> energyLevel range [7, 14] <br>
+     * index 2 -> energyLevel range [15, up] <br>
+     */
     protected static final int[] movesOnEnergy = {1, 3, 4};
 
     /**
-     * Constructor for Zebra class
-     * Set new Zebra position and place it on a map
+     * Constructor for Zebra class <br>
+     * Set new Zebra position and place it on a map <br>
      * @param position Position to put new Zebra
      * @param map SafariMap where new Zebra lives
      */
@@ -45,11 +51,11 @@ public class Zebra extends Animal{
     }
 
     /**
-     * Reacts to SafariObject on given position
-     * If there is no object relocate to that position
-     * If there is a Grass eat it and relocate to that position
-     * If there is another Zebra reproduce
-     * If there is another SafariObject do not make move it can be dangerous
+     * Reacts to SafariObject on given position <br>
+     * If there is no object relocate to that position <br>
+     * If there is a Grass eat it and relocate to that position <br>
+     * If there is another Zebra reproduce <br>
+     * If there is another SafariObject do not make move it can be dangerous <br>
      * @param position Position to react
      */
     @Override
@@ -74,8 +80,8 @@ public class Zebra extends Animal{
     }
 
     /**
-     * Reproduce Animals
-     * It means place new Zebra on the SafariMap if there is a free position
+     * Reproduce Animals <br>
+     * It means place new Zebra on the SafariMap if there is a free position <br>
      * If there is no more free Positions prints information about that
      */
     @Override
@@ -92,9 +98,9 @@ public class Zebra extends Animal{
     }
 
     /**
-     * Eat given SafariObject
-     * Makes the object disappears
-     * Increase Zebra's energyLevel
+     * Eat given SafariObject <br>
+     * Makes the object disappears <br>
+     * Increase Zebra's energyLevel <br>
      * @param object SafariObject to eat
      */
     protected void eat(SafariObject object) {
@@ -106,7 +112,7 @@ public class Zebra extends Animal{
     }
 
     /**
-     * Formats information about Animal to String appropriate to write it later to csv file
+     * Formats information about Animal to String appropriate to write it later to csv file<br>
      * @return String with information about Animal in format:
      *          class, id, energyLevel, isAsleep, sleepTime, (x y), quantity
      */
@@ -117,8 +123,8 @@ public class Zebra extends Animal{
     }
 
     /**
-     * Makes the Zebra to disappear form SafariMap
-     * Decrease Zabras' quantity
+     * Makes the Zebra to disappear form SafariMap <br>
+     * Decrease Zabras' quantity <br>
      * @param map SafariMap where object lives
      */
     @Override

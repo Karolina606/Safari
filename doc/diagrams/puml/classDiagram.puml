@@ -1,138 +1,233 @@
 @startuml
 skinparam classAttributeIconSize 0
 
-package safari.animals{
-    abstract class Animal{
-        #energyLevel: int
-        #sleepTime: int
-        #position: Position
-        #isAsleep: boolean
-        +Animal(Position)
-        +{abstract}move(Map): void
-        #{abstract}reproduction(List<Animal>): void
-        #{abstract}eat(Object): void
-    }
-    note left of Animal:-energyLevel będzie w zakresie od 0 do 20 \n -przy każdym ruchu poziom energii spada \n -podczas jedzenia rośnie o wartoć odżywczą pokarmu \n -Dla każdego z tych zakresów (0,6], (6,14], (14, 20] zwierzęta poruszają się \n o inną liczbę pól \n -jeśli wartość ta spanie poniżej 4 zwierze z pewnym prawdopodobieństwem zaśnie \n - dla wartości 0 zwierze umiera
-    class Zebra{
-        -{static}quantity: int
-        +Zebra(Position)
-        +move(Map): void
-        #reproduction(List<Animal>): void
-        #eat(Object): void
-    }
-    class Elephant{
-        -{static}quantity: int
-        +Elephant(Position)
-        +move(Map): void
-        #reproduction(List<Animal>): void
-        #eat(Object): void
-    }
-    class Lion{
-        -{static}quantity: int
-        +Lion(Position)
-        +move(Map): void
-        #reproduction(List<Animal>): void
-        #eat(Object): void
-        -attack(Object): void
-    }
-
-    Animal <|-- Zebra
-    Animal <|-- Elephant
-    Animal <|-- Lion
-}
-package safari.plants{
-    abstract class Plant{
-        #energyValue: int
-        #position: Position
-        +Plant(Position)
-        +getEnergyValue(): int
-    }
-    class Grass{
-        -{static}quantity: int
-        +Grass(Position)
-    }
-    class Tree{
-        -{static}quantity: int
-        -leavesQuantity: int
-        +Three(Position)
-        +getLeavesQuantity(): int
-        +decreaseLeavesQuantity(): int
-    }
-    note top of Tree: energyValue to wartość odżywcza \n jednego listka w tym przypadku
-
-    Plant <|-- Grass
-    Plant <|-- Tree
-}
-
-package safari.human{
-    class Human{
-        -gun: Gun
-        +Human(Position)
-        +shoot(Position): void
-        -lookForTheAim(List<Animals>): Position
-    }
-    class Gun{
-        ~quantityOfBullets: int
-        +Gun()
-        +shoot(Position):void
-    }
-    Human *-- Gun
-}
-
 package safari{
     class Safari{
-        -maxIter: int
-        -map: Map
-        -allAnimals: List<Animal>
+        -{static}maxIter: int
+        -{static}map:SafariMap
+        -{static}fileManager: FileManager
+        -{static}instance: Safari
         +Safari(int, int)
-        +getMap():Map
-        +getAllAnimals():List<Animal>
-        +placeRandomSafariObjects():void
         +{static}main(String[]):void
+        +putHumanOnSafari():void
     }
 
-    class Map{
-        -width: int
-        -height: int
-        -map:SafariObject[][]
-        -freePositions:List<Position>
-        +Map(int, int)
-        +getWidth(): int
-        +getHeight(): int
-        +removeFromFreePositions(Position):void
-        +freeUpPosition(Position):void
-        +getOneOfFreePositions():Position
-        +checkWhatsOnPosition(Position):SafariObject
-        +placeSafariObject(SafariObject, Position):void
+    package safari.safariMap{
+        interface ISafariMap{
+            +getWidth():int
+            +getHeight():int
+            +getMap():Map<Position, SafariObject>
+            +getAllAnimalsAndHumans():List<IActionable>
+            +getFreePositions():List<Position>
+            +getAllPositions():List<Position>
+            +removeFromFreePositions(Position):void
+            +freeUpPosition(Position):void
+            +getFreePosition():Position
+            +placeSafariObject(SafariObject, Position):void
+        }
+
+        class SafariMap{
+            -width: int
+            -height: int
+            -map:Map<Position, SafariObject>
+            -allAnimalsAndHumans:List<IActionable>
+            -allPositions:List<Position>
+            -freePositions:List<Position>
+            -animalAmount:int
+            +SafariMap(int, int)
+            +getWidth(): int
+            +getHeight(): int
+            +getMap(): Map<Position, SafariObject>
+            +getAllAnimalsAndHumans():List<IActionable>
+            +getAllPositions():List<Position>
+            +getFreePositions():List<Position>
+            +getFreePosition():Position
+            +removeFromFreePositions(Position):void
+            +freeUpPosition(Position):void
+            +placeSafariObject(SafariObject, Position):void
+            +increaseAnimalAmount():void
+            +decreaseAnimalAmount():void
+        }
+
+        class SafariMapCreator{
+            +{static}placeRandomSafariObjects(int, int, int, SafariMap):void
+        }
+
+        interface IPosition{
+            +getX():int
+            +getY():int
+            +equals(int, int):boolean
+        }
+
+        class Position{
+            -x: int
+            -y: int
+            +Position(int, int): void
+            +getX(): int
+            +getY(): int
+            +{static}randomPosition(SafariMap): Position
+            +{static}randomFreePosition(SafariMap): Position
+            +equals(int, int)
+            +toString(): String
+        }
+    }
+    package safariObjects{
+        abstract class SafariObject{
+            #position: Position
+            +map: SafariMap
+            +getPosition():Position
+            +setPosition(Position):void
+            +{abstract}makeAction():void
+            +disappear(SafariMap):void
+        }
+
+        interface IActionable{
+            +makeAction():void
+        }
+
+        package safari.safariObjects.animals{
+            interface IAnimal{
+                +makeAction(int[]):void
+                +move():void
+                +disappear(SafariMap):void
+                +animalToFile():String
+            }
+
+            abstract class Animal{
+                #energyLevel: int
+                #sleepTime: int
+                #isAsleep: boolean
+                -{static}idCount:int
+                #id: int
+                #position: Position
+                +Animal(Position, SafariMap)
+                +makeAction(int[]):void
+                +move(): void
+                +makeAllMoves(int[]):void
+                #decreaseEnergy():void
+                #{abstract}react(Position):void
+                #{abstract}reproduce(): void
+                #{abstract}eat(Object): void
+                +animalToFile():String
+                +disappear(SafariMap):void
+                +toString():String
+            }
+            note left of Animal:-przy każdym ruchu poziom energii spada \n -podczas jedzenia rośnie o wartoć odżywczą pokarmu \n -Dla każdego z tych zakresów (0,6], [7,14], (15, up] zwierzęta poruszają się \n o inną liczbę pól \n -jeśli wartość ta spanie poniżej 4 zwierze z pewnym prawdopodobieństwem zaśnie \n - dla wartości 0 zwierze umiera
+            class Zebra{
+                -{static}quantity: int
+                #{static}{final}movesOnEnergy:int[]
+                +Zebra(Position, SafariMap)
+                +makeAction(int[])
+                +makeAction()
+                #react(Position)
+                #reproduce(): void
+                #eat(SafariObject): void
+                +animalToFile():String
+                +disappear(SafariMap):void
+            }
+            class Elephant{
+                -{static}quantity: int
+                #{static}{final}movesOnEnergy:int[]
+                +Elephant(Position, SafariMap)
+                +makeAction(int[])
+                +makeAction()
+                #react(Position)
+                #reproduce(): void
+                #eat(SafariObject): void
+                +animalToFile():String
+                +disappear(SafariMap):void
+            }
+            class Lion{
+                -{static}quantity: int
+                #{static}{final}movesOnEnergy:int[]
+                +Lion(Position, SafariMap)
+                +makeAction(int[])
+                +makeAction()
+                #react(Position)
+                #reproduce(): void
+                -attack(Object): void
+                #eat(SafariObject): void
+                +animalToFile():String
+                +disappear(SafariMap):void
+            }
+
+            IActionable <|-- Animal
+            IAnimal <|-- Animal
+            Animal <|-- Zebra
+            Animal <|-- Elephant
+            Animal <|-- Lion
+        }
+        package safari.safariObjects.plants{
+            abstract class Plant{
+                #energyValue: int
+                #position: Position
+                +Plant(Position, SafariMap)
+                +getEnergyValue(): int
+            }
+            class Grass{
+                -{static}quantity: int
+                +Grass(Position, SafariMap)
+            }
+            class Tree{
+                -{static}quantity: int
+                -leavesQuantity: int
+                +Three(Position, SafariMap)
+                +getLeavesQuantity(): int
+                +decreaseLeavesQuantity(): int
+            }
+            note top of Tree: energyValue to wartość odżywcza \n jednego listka w tym przypadku
+
+            Plant <|-- Grass
+            Plant <|-- Tree
+        }
+
+        package safari.safariObjects.human{
+            interface IHuman{
+                +shoot():void
+                +toString():String
+            }
+
+            class Human{
+                -gun: Gun
+                +Human(Position, SafariMap)
+                +makeAction():void
+                +shoot(Position): void
+                -lookForTheAim(List<IActionable>): Position
+                +toString():String
+            }
+            class Gun{
+                -quantityOfBullets: int
+                +Gun()
+                +shoot(Position, SafariMap):void
+            }
+            IActionable <|-- Human
+            IHuman <|-- Human
+            Human *-- Gun
+        }
     }
 
-    abstract class SafariObject{
-        #position: Position
-        +getPosition():Position
-        +setPosition(Position):void
-        +disappear():void
+    package safari.fileManager{
+        interface IFileManager{
+            +saveToReportArray(List<IActionable>, int): void
+            +writeToFile(String): void
+        }
+
+        class FileManager{
+            -toReport: ArrayList<String>
+            +saveToReportArray(List<IActionable>, int): void
+            +writeToFile(String):void;
+        }
+        IFileManager <|-- FileManager
     }
-    Safari *-- Map
+
+    Safari *-- SafariMap
     Safari o-- SafariObject
-    Map o-right- SafariObject
+    SafariMap o-right- SafariObject
+    ISafariMap <|-- SafariMap
     SafariObject <|-- Animal
     SafariObject <|-- Plant
     SafariObject <|-- Human
-}
-package safari.positionSystem{
-    class Position{
-        -x: int
-        -y: int
-        +Position(int, int): void
-        +getX(): int
-        +getY(): int
-        +setX(int): void
-        +setY(int):void
-        +{static}randomPosition(Map): Position
-        +{static}randomFreePosition(Map): Position
-    }
+    IPosition <|-- Position
     SafariObject *-right- Position
 }
-note top of Position: Każdy obiekt dziedziczący po klasie SafariObject ma zawierać obiekt Position (nie odwrotnie).\nW każdej epoce symulacji chcę iterować po liście Safari.allAnimals,\naby każde zwierze wykonało ruch. Jeśli nie będzie odpwowiedniego miejsca na jego\nwykonanie zwierze nie wykona ruchu w tej epoce. Jeżeli ruch wykona się poprawnie\nwewnętrzny atrybut zwierzęcia jakim jest Position ulegnie zmianie.\nAle zanim to nastąpi referencja do tego obiektu klasy zwierze zostanie zapisana do tablicy\nMap.map[][] na nowej pozycji którą wskazują atrybuty nowego Position.\nReferencja do tego obiektu zostanie usunięta ze starej pozycji w Map.map[][].
-
 @enduml

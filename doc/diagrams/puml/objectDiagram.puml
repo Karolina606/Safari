@@ -1,5 +1,4 @@
 @startuml
-skinparam defaultFontColor white
 
 object Safari{
     allAnimals

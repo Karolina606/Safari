@@ -2,6 +2,7 @@ package safari.safariObjects.human;
 
 import safari.safariMap.Position;
 import safari.safariMap.SafariMap;
+import safari.safariObjects.IActionable;
 import safari.safariObjects.SafariObject;
 import safari.safariObjects.animals.Lion;
 
@@ -11,7 +12,10 @@ import java.util.List;
  * Class represents human object in simulation
  * Human is subclass of {@link SafariObject}
  */
-public class Human extends SafariObject {
+public class Human extends SafariObject implements IHuman, IActionable {
+    /**
+     * Gun with Human posses
+     */
     private Gun gun;
 
     /**
@@ -27,6 +31,10 @@ public class Human extends SafariObject {
         System.out.println("Dodano: "+ this.getClass().getSimpleName() + " na pozycje: " + position.toString());
     }
 
+    /**
+     * Makes Human to take some action
+     */
+    @Override
     public void makeAction(){
         shoot();
     }
@@ -36,11 +44,11 @@ public class Human extends SafariObject {
      * @param listOfAnimals list of all Animals on the Safari
      * @return Lion's Position if Lion is on the Safari, returns new Point (-1, -1) if it is not there
      */
-    private Position lookForTheAim(List<SafariObject> listOfAnimals){
+    private Position lookForTheAim(List<IActionable> listOfAnimals){
         //szuka lwa na liście wszystkich zwierząt
-        for(SafariObject animal: listOfAnimals){
+        for(IActionable animal: listOfAnimals){
             if(animal instanceof Lion){
-                return animal.getPosition();
+                return ((SafariObject)animal).getPosition();
             }
         }
         //kiedy nie ma żadnego lwa na safari

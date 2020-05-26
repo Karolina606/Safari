@@ -7,8 +7,13 @@ import safari.safariMap.SafariMap;
  * Abstract class to deal with all object living on Safari
  */
 public abstract class SafariObject {
+    /**
+     * Current Positon of SafariObject
+     */
     protected Position position;
-    //SafariMap where object lives
+    /**
+     * SafariMap where SafariObject lives
+     */
     public SafariMap map;
 
     /**
@@ -26,11 +31,6 @@ public abstract class SafariObject {
     public void setPosition(Position position){
         this.position = position;
     }
-
-    /**
-     * Makes living organism to do action
-     */
-    public abstract void makeAction();
 
     /**
      * Remove SafariObject from Safari

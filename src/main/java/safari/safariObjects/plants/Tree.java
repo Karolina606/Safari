@@ -8,7 +8,13 @@ import safari.safariMap.SafariMap;
  * Tree is subclass of {@link Plant}
  */
 public class Tree extends Plant{
+    /**
+     * Quantity of Trees on the safari
+     */
     private int quantity = 0;
+    /**
+     * Quantity of leaves left on the Tree
+     */
     private int leavesQuantity;
     /**
      * Makes Tree object and put it on Safari, sets energyValue on 1 and leavesQuantity to 20
@@ -38,6 +44,7 @@ public class Tree extends Plant{
         //co jesli nie ma juz lisci
         if(leavesQuantity <= 0){
             System.out.println("There is no more leaves on this tree");
+            super.energyValue = 0;
         }
         //jesli liscie jeszcze sa na drzewie
         else{

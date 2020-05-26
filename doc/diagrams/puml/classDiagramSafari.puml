@@ -1,0 +1,15 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+package safari{
+    class Safari{
+        -{static}maxIter: int
+        -{static}map:SafariMap
+        -{static}fileManager: FileManager
+        -{static}instance: Safari
+        +Safari(int, int)
+        +{static}main(String[]):void
+        +putHumanOnSafari():void
+    }
+}
+@enduml

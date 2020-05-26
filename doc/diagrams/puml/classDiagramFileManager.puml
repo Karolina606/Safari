@@ -1,0 +1,17 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+package safari.fileManager{
+    interface IFileManager{
+        +saveToReportArray(List<IActionable>, int): void
+        +writeToFile(String): void
+    }
+
+    class FileManager{
+        -toReport: ArrayList<String>
+        +saveToReportArray(List<IActionable>, int): void
+        +writeToFile(String):void;
+    }
+    IFileManager <|-- FileManager
+}
+@enduml

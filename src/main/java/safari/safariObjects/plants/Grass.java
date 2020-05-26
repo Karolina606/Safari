@@ -8,10 +8,12 @@ import safari.safariMap.SafariMap;
  * Grass is subclass of {@link Plant}
  */
 public class Grass extends Plant{
+    /**
+     * Quantity of Grass on the safari
+     */
     private int quantity = 0;
     /**
      * Makes Grass object and put it on Safari and sets energyValue on 2
-     *
      * @param position Position to put the Plant on it
      * @param map SafariMap where Grass is going to be placed
      */

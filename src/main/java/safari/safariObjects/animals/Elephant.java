@@ -1,3 +1,6 @@
+/**
+ * Animals
+ */
 package safari.safariObjects.animals;
 
 import safari.safariMap.Position;
@@ -10,15 +13,21 @@ import safari.safariObjects.plants.Tree;
  * Elephant is subclass of {@link Animal}
  */
 public class Elephant extends Animal{
+    /**
+     * Quantity of all Elephants on the safari
+     */
     private static int quantity = 0;
-    //tablica przechowuje ilosc ruchow do wykonania w zadanych stanach energetycznych {0 = [1,6], 1 = [7, 14], 2 = [15, up]}
-    //0,1,2 --> indeksy
-    //[1,6], [7, 14], [15, up] --> stany energetyczne
+    /**
+     * List contains number of moves available to make on each of three energyLevel ranges <br>
+     * index 0 -> energyLevel range [1,6] <br>
+     * index 1 -> energyLevel range [7, 14] <br>
+     * index 2 -> energyLevel range [15, up] <br>
+     */
     protected static final int[] movesOnEnergy = {1, 2, 3};
 
     /**
-     * Constructor for Elephant class
-     * Set new Elephant position and place it on a map
+     * Constructor for Elephant class <br>
+     * Set new Elephant position and place it on a map <br>
      * @param position Position to put new Zebra
      * @param map SafariMap where new Zebra lives
      */
@@ -45,11 +54,11 @@ public class Elephant extends Animal{
     }
 
     /**
-     * Reacts to SafariObject on given position
-     * If there is no object relocate to that position
-     * If there is a Tree eat leaves from it and relocate to that position
-     * If there is another Elephant reproduce
-     * If there is another SafariObject do not make move it can be dangerous
+     * Reacts to SafariObject on given position <br>
+     * If there is no object relocate to that position <br>
+     * If there is a Tree eat leaves from it and relocate to that position <br>
+     * If there is another Elephant reproduce <br>
+     * If there is another SafariObject do not make move it can be dangerous <br>
      * @param position Position to react
      */
     @Override
@@ -71,9 +80,9 @@ public class Elephant extends Animal{
     }
 
     /**
-     * Reproduce Animals
-     * It means place new Elephant on the SafariMap if there is a free position
-     * If there is no more free Positions prints information about that
+     * Reproduce Animals <br>
+     * It means place new Elephant on the SafariMap if there is a free position <br>
+     * If there is no more free Positions prints information about that <br>
      */
     @Override
     protected void reproduce() {
@@ -89,9 +98,9 @@ public class Elephant extends Animal{
     }
 
     /**
-     * Eat leaves from Tree given as a SafariObject
-     * Decrease quantity of leaves on thet Tree
-     * Increase Elephant's energyLevel
+     * Eat leaves from Tree given as a SafariObject <br>
+     * Decrease quantity of leaves on thet Tree <br>
+     * Increase Elephant's energyLevel <br>
      * @param object SafariObject actually a Tree object
      */
     @Override
@@ -103,8 +112,10 @@ public class Elephant extends Animal{
             //zjedz liscia z drzewa
             tree.decreaseLeavesQuantity();
             //dodaj sobie energii
-            this.energyLevel += tree.getEnergyValue();
-            System.out.println("Słoń zjadł liść z drzewa");
+            if(tree.getEnergyValue() != 0) {
+                this.energyLevel += tree.getEnergyValue();
+                System.out.println("Słoń zjadł liść z drzewa");
+            }
         }
     }
 
@@ -120,8 +131,8 @@ public class Elephant extends Animal{
     }
 
     /**
-     * Makes the Elephant to disappear form SafariMap
-     * Decrease Elephants' quantity
+     * Makes the Elephant to disappear form SafariMap <br>
+     * Decrease Elephants' quantity <br>
      * @param map SafariMap where object lives
      */
     @Override

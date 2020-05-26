@@ -1,5 +1,6 @@
 package safari.safariMap;
 
+import safari.safariObjects.IActionable;
 import safari.safariObjects.SafariObject;
 import safari.safariObjects.animals.Animal;
 
@@ -10,12 +11,36 @@ import java.util.*;
  * SafariMap implements {@link ISafariMap}
  */
 public class SafariMap implements ISafariMap {
+    /**
+     * Width of the SafariMap
+     */
     private int width;
+    /**
+     * Height of the SafariMap
+     */
     private int height;
+    /**
+     * HashMap with Positions as keys and SafariObject as values
+     */
     private Map<Position, SafariObject> map = new HashMap<>();
-    private List<SafariObject> allAnimalsAndHumans = new ArrayList<>();
+    /**
+     * List of all Animals and Humans on Safari
+     * it helps living objects to make action
+     */
+    private List<IActionable> allAnimalsAndHumans = new ArrayList<>();
+    /**
+     * List of all Positions on the SafariMap
+     */
     private List<Position> allPositions = new LinkedList<>();
+    /**
+     * List of all free Positions on the SafariMap
+     */
     private List<Position> freePositions = new LinkedList<>();
+
+    /**
+     * Number of Animals left on the Safari
+     */
+    private int animalAmount = 0;
 
     /**
      * SafariMap constructor
@@ -46,6 +71,7 @@ public class SafariMap implements ISafariMap {
      * Gets SafariMap width
      * @return int SafariMap width
      */
+    @Override
     public int getWidth() {
         return width;
     }
@@ -54,6 +80,7 @@ public class SafariMap implements ISafariMap {
      * Gets SafariMap height
      * @return int SafariMap height
      */
+    @Override
     public int getHeight() {
         return height;
     }
@@ -62,17 +89,19 @@ public class SafariMap implements ISafariMap {
      * Gets 2D map, HashMap
      * keys: Position
      * values: SafariObject
-     * @return Map<Position, SafariObject>
+     * @return Map\<Position, SafariObject\>
      */
+    @Override
     public Map<Position, SafariObject> getMap(){
         return map;
     }
 
     /**
      * Gets list of all Animals and Humans on Safari
-     * @return List<SafariObject>
+     * @return List\<SafariObject\>
      */
-    public List<SafariObject> getAllAnimalsAndHumans() {
+    @Override
+    public List<IActionable> getAllAnimalsAndHumans() {
         return allAnimalsAndHumans;
     }
 
@@ -80,6 +109,7 @@ public class SafariMap implements ISafariMap {
      * Gets list of all position on the map
      * @return List<Position>
      */
+    @Override
     public List<Position> getAllPositions() {
         return allPositions;
     }
@@ -88,6 +118,7 @@ public class SafariMap implements ISafariMap {
      * Gets list of free positions on the map
      * @return List<Position>
      */
+    @Override
     public List<Position> getFreePositions() {
         return freePositions;
     }
@@ -96,6 +127,7 @@ public class SafariMap implements ISafariMap {
      * Gets one of the free positions
      * @return Position - free position on map or (-1, -1) when there is no free positions
      */
+    @Override
     public Position getFreePosition(){
         // jesli nie ma wolnej pozycji zwraca (-1, -1)
         if(freePositions.isEmpty()){
@@ -112,9 +144,19 @@ public class SafariMap implements ISafariMap {
     }
 
     /**
+     * Gets number of Animals left on the Safari
+     * @return integer number of Animals left on the Safari
+     */
+    @Override
+    public int getAnimalAmount(){
+        return animalAmount;
+    }
+
+    /**
      * Removes given position from freePositions
      * @param position position to remove from list
      */
+    @Override
     public void removeFromFreePositions(Position position){
         if(freePositions.contains(position)){
             freePositions.remove(position);
@@ -128,6 +170,7 @@ public class SafariMap implements ISafariMap {
      * Adds position to list of free positions and removes object on that position
      * @param position to free up
      */
+    @Override
     public void freeUpPosition(Position position){
         if(freePositions.contains(position)){
             System.out.println("Ta pozycja jest już wolna: " + position.toString());
@@ -136,6 +179,47 @@ public class SafariMap implements ISafariMap {
             //dodaj ta pozycje do listy wolnych pozycji, na jego miejsce w SafariMap wstaw null
             freePositions.add(position);
             map.put(position, null);
+        }
+    }
+
+    /**
+     * Puts SafariObject on given position
+     * @param object SafariObject to put
+     * @param position position to put SafariObject
+     */
+    // umieszcza obiekt tylko w SafariMap
+    @Override
+    public void placeSafariObject(SafariObject object, Position position){
+
+        if(object.getPosition() != null){
+            freeUpPosition(object.getPosition());
+        }
+        //jesli cos bylo na tej pozycji to musi to albo zjesc albo tu nie stawac
+        //stawia obiekt na nowe miejsce
+        map.put(position, object);
+        //zapisanie wewnątrz obiektu nowej pozycji
+        object.setPosition(position);
+
+        //zabierz zajeta pozycje z listy wolnych
+        freePositions.remove(position);
+
+        //wyswietl informacje o przemieszczeniu
+        System.out.println(object.getClass().getSimpleName() + " umieścił/a się na pozycji: " + position.toString() );
+    }
+
+    /**
+     * Increases number of Animals left on the Safari
+     */
+    public void increaseAnimalAmount(){
+        animalAmount++;
+    }
+
+    /**
+     * Decrease number of Animals left on the Safari
+     */
+    public void decreaseAnimalAmount(){
+        if(animalAmount>0){
+            animalAmount--;
         }
     }
 
@@ -156,35 +240,12 @@ public class SafariMap implements ISafariMap {
     }
 
     /**
-     * Puts SafariObject on given position
-     * @param object SafariObject to put
-     * @param position position to put SafariObject
-     */
-    // umieszcza obiekt tylko w SafariMap
-    public void placeSafariObject(SafariObject object, Position position){
-
-        if(object.getPosition() != null){
-            freeUpPosition(object.getPosition());
-        }
-        //jesli cos bylo na tej pozycji to musi to albo zjesc albo tu nie stawac
-        //stawia obiekt na nowe miejsce
-        map.put(position, object);
-        //zapisanie wewnątrz obiektu nowej pozycji
-        object.setPosition(position);
-
-        //System.out.println("Freeplace size: " + freePositions.size());
-        //zabierz zajeta pozycje z listy wolnych
-        freePositions.remove(position);
-        //System.out.println("Freeplace size: " + freePositions.size());
-    }
-
-    /**
      * Prints SafariMap
      */
     public void printSafariMap(){
         for(Position pos: map.keySet()){
             if(map.get(pos) instanceof Animal){
-                System.out.println(pos.toString() + "-------> "+ map.get(pos) .toString());
+                System.out.println(pos.toString() + "-------> "+ map.get(pos).toString());
             }
             else{
                 System.out.println("null");

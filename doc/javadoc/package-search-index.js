@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"safari"},{"l":"safari.fileManager"},{"l":"safari.safariMap"},{"l":"safari.safariObjects"},{"l":"safari.safariObjects.animals"},{"l":"safari.safariObjects.human"},{"l":"safari.safariObjects.plants"}]

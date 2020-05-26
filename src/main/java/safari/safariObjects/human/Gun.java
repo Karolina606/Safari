@@ -7,18 +7,21 @@ import safari.safariMap.SafariMap;
  * Class to deal with gun
  */
 public class Gun {
+    /**
+     * Quantity of bullets left
+     */
     private int quantityOfBullets;
 
     /**
-     *Makes Gun object and sets it's quantityOfBullets to 10
+     *Makes Gun object and sets it's quantityOfBullets to 5
      */
     public Gun(){
         quantityOfBullets = 5;
     }
 
     /**
-     * Fires the gun to kill Lion
-     * it will kill a Lion if it lives on Safari and when there is amunition left
+     * Fires the gun to kill Lion <br>
+     * it will kill a Lion if it lives on Safari and when there is amunition left <br>
      * @param position position of a Lion or (-1, -1) when there is no Lion
      * @param map SafariMap where a Lion lives
      */

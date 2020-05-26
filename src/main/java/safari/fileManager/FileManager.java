@@ -1,6 +1,6 @@
 package safari.fileManager;
 
-import safari.safariObjects.SafariObject;
+import safari.safariObjects.IActionable;
 import safari.safariObjects.animals.Animal;
 
 import java.io.IOException;
@@ -10,19 +10,26 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class handles with files in the program
+ * Helps in saving information about objects
+ */
 public class FileManager implements IFileManager{
-    private ArrayList<String> toReport = new ArrayList();
+    /**
+     * Stores information about each simulation to save it later to the file
+     */
+    private final ArrayList<String> toReport = new ArrayList<>();
 
     /**
      * Saves information about Animals in iteration to array
-     * @param list list of Animals
+     * @param list list of IActionable where we are looking for all Animals
      * @param iteration number of iteration in simulation
      */
-    public void saveToReportArray(List<SafariObject> list, int iteration){
+    public void saveToReportArray(List<IActionable> list, int iteration){
         toReport.add("Iteration: " + ((Integer) iteration).toString());
 
         toReport.add("class, id, energyLevel, isAsleep, sleepTime, position, population");
-        for(SafariObject object: list){
+        for(IActionable object: list){
             if(object instanceof Animal){
                 toReport.add(((Animal) object).animalToFile());
             }

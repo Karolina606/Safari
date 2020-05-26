@@ -2,15 +2,34 @@ package safari.safariObjects.animals;
 
 import safari.safariMap.Position;
 import safari.safariMap.SafariMap;
+import safari.safariObjects.IActionable;
 import safari.safariObjects.SafariObject;
 
 import java.util.Random;
 
-public abstract class Animal extends SafariObject implements IAnimal{
-    int energyLevel = 20;
-    int sleepTime = 0;
-    boolean isAsleep = false;
+/**
+ * Abstract class to handle with animal
+ */
+public abstract class Animal extends SafariObject implements IAnimal, IActionable {
+    /**
+     * Energy level of the Animal
+     */
+    protected int energyLevel = 20;
+    /**
+     * Sleep time of the Animal (number of iterations during with Animal was asleep)
+     */
+    protected int sleepTime = 0;
+    /**
+     * If Animal is asleep
+     */
+    protected boolean isAsleep = false;
+    /**
+     * Static variable it counts ids
+     */
     private static int idCount = 0;
+    /**
+     * Individual id of the Animal
+     */
     protected int id;
 
     /**
@@ -22,11 +41,15 @@ public abstract class Animal extends SafariObject implements IAnimal{
         this.id = idCount;
         idCount++;
         this.position = position;
+        System.out.println("Młody/a " + this.getClass().getSimpleName() + " na safari");
+        //znajdz miejsce dla zwierzaka
         map.placeSafariObject(this, position);
-        //place in allAnimals
+        //place in allAnimalsAndHumans
         map.getAllAnimalsAndHumans().add(this);
+        //zapamiętaj mapę na której żyje
         this.map = map;
-        System.out.println("Młody/młoda "+ this.getClass().getSimpleName() + " na pozycje: " + position.toString());
+        //zwiększ liczbę zapamiętanych zwierząt
+        this.map.increaseAnimalAmount();
     }
 
     /**
@@ -72,8 +95,9 @@ public abstract class Animal extends SafariObject implements IAnimal{
                 //jesli zwierze nie zasnelo wykonaj ruch
                 move();
             }
+        }else {
+            makeAllMoves(movesOnEnergy);
         }
-        makeAllMoves(movesOnEnergy);
     }
 
     /**
@@ -115,13 +139,24 @@ public abstract class Animal extends SafariObject implements IAnimal{
      */
     protected void decreaseEnergy(){
         //odejmij energie jaka zwierze utracilo na probe przemieszczenia
-        if(energyLevel-2 >= 0){
+        if(energyLevel-2 > 0){
             //jezeli jeszcze ma sily to podczas ruchu odejmuje sie mu dwie jednostki energii
             this.energyLevel-=2;
+        }else if (energyLevel-1 > 0){
+            //gdy jest już na skraju sił
+            this.energyLevel-=1;
         }else{
+            //zwierze umarło z wycieńczenia
+            this.disappear(this.map);
+        }
+
+        /*else if(energyLevel-1 >= 0){
             //u schylku zycia odejmuje sie zaledwie jedna jednostke energii
             this.energyLevel-=1;
-        }
+        }else{
+            //zwierze umarło z wycieńczenia
+            this.disappear(this.map);
+        }*/
     }
 
     /**
@@ -159,6 +194,7 @@ public abstract class Animal extends SafariObject implements IAnimal{
     public void disappear(SafariMap map){
         super.disappear(map);
         map.getAllAnimalsAndHumans().remove(this);
+        map.decreaseAnimalAmount();
     }
 
     /**
